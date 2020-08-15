@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kapitan", "Kapitan\Kapitan.csproj", "{B6198D8A-8D33-41A2-B6AC-0A58AFFCB83B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kapitan.Core", "Kapitan.Core\Kapitan.Core.csproj", "{57897710-2AC6-4D8A-9828-E71B87389FF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6198D8A-8D33-41A2-B6AC-0A58AFFCB83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6198D8A-8D33-41A2-B6AC-0A58AFFCB83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6198D8A-8D33-41A2-B6AC-0A58AFFCB83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6198D8A-8D33-41A2-B6AC-0A58AFFCB83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57897710-2AC6-4D8A-9828-E71B87389FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57897710-2AC6-4D8A-9828-E71B87389FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57897710-2AC6-4D8A-9828-E71B87389FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57897710-2AC6-4D8A-9828-E71B87389FF2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75989A30-2C93-4FC7-92E9-5AA15A001FE5}
+	EndGlobalSection
+EndGlobal
