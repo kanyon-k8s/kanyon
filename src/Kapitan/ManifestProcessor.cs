@@ -17,7 +17,7 @@ namespace Kapitan
 
         public Dictionary<string, string> BuildConfiguration()
         {
-            var config = new Dictionary<string, string>();
+            var config = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             foreach (var configProvider in configProviders)
             {
                 config = configProvider.Build(config);
