@@ -16,7 +16,7 @@ namespace Kapitan
         public async Task<Manifest> LoadManifest(FileInfo file)
         {
             var console = new ScriptConsole(Console.Error, Console.In, Console.Error);
-            var logger = LogHelper.CreateLogFactory("info");
+            var logger = LogHelper.CreateLogFactory("debug");
 
             var manifestSource = File.ReadAllText(file.FullName);
 
