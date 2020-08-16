@@ -19,7 +19,7 @@ jobs:
     - name: Build OperatorSharp with dotnet
       run: dotnet build --configuration Release src/Kapitan.sln --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
     - name: Package OperatorSharp
-      run: dotnet pack --configuration Release src/Kapitan.Core/Kapitan.Core.csproj --version-suffix prerelease-$(date +%Y%m%d%H%M%S) -o ../artifacts/
+      run: dotnet pack --configuration Release src/Kapitan.sln --version-suffix prerelease-$(date +%Y%m%d%H%M%S) -o ../artifacts/
     - name: Publish All
       run: |
            for f in ../artifacts/*.nupkg
