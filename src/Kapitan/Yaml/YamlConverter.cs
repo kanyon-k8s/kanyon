@@ -1,6 +1,4 @@
-﻿using k8s;
-using k8s.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -25,7 +23,7 @@ namespace Kapitan.Yaml
                     .WithNamingConvention(new CamelCaseNamingConvention())
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new IntOrStringYamlConverter())
-                    .WithEventEmitter(e => new StringQuotingEmitter(e))
+                    .WithEventEmitter(e => new k8s.StringQuotingEmitter(e))
                     .BuildValueSerializer();
             emitter.Emit(new StreamStart());
             emitter.Emit(new DocumentStart());
