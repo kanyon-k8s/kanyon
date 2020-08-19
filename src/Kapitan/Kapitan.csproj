@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kapitan.Core\Kapitan.Core.csproj" />
+    <ProjectReference Include="..\Kapitan.Kubernetes\Kapitan.Kubernetes.csproj" />
   </ItemGroup>
 
 </Project>

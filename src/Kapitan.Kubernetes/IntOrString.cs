@@ -30,6 +30,8 @@ namespace Kapitan.Kubernetes
 
         public static implicit operator IntOrString(string v)
         {
+            if (string.IsNullOrEmpty(v)) return null;
+
             return new IntOrString(v);
         }
 
