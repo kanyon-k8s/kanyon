@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using k8s;
+using Kapitan.Kubernetes;
+
+namespace Kapitan.Kubernetes{{Namespace}}
+{
+    public partial class {{TypeName}} : IKubernetesObject
+    {
+        [JsonProperty("apiVersion")]
+        public string ApiVersion => "{{ApiVersion}}";
+        [JsonProperty("kind")]
+        public string Kind => "{{TypeName}}";
+
+{{~ for $property in PropertyDefinitions ~}}
+        /// <summary>
+        /// {{$property.Description}}
+        /// </summary>
+        public {{$property.Type}} {{$property.Name}} { get; set; }
+{{~ end ~}}
+    }
+}

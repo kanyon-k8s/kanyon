@@ -9,7 +9,7 @@ namespace Kapitan.Core
     {
         public virtual void ConfigureItems(Dictionary<string, string> configuration)
         {
-
+            
         }
 
         public void Add(Manifest item)

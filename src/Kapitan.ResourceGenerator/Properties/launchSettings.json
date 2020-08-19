@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Kapitan.ResourceGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "c:\\temp\\swagger.json c:\\temp\\src"
+    }
+  }
+}
