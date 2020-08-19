@@ -1,11 +1,8 @@
-﻿using k8s;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Kapitan.Core
 {
-    public class Manifest : List<IKubernetesObject>
+    public class Manifest : List<IManifestObject>
     {
         public virtual void ConfigureItems(Dictionary<string, string> configuration)
         {
