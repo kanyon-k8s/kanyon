@@ -15,6 +15,15 @@ namespace Kapitan.ResourceGenerator
     {
         private readonly Dictionary<string, ApiVersion> namespaceInfo;
 
+        private Dictionary<string, string> ReservedPropertyNames = new Dictionary<string, string>
+        {
+            { "namespace", "@namespace" },
+            { "object", "@object" },
+            { "default", "@default" },
+            { "operator", "@operator" },
+            { "continue", "@continue" }
+        };
+
         public TypeMapper(Dictionary<string, ApiVersion> namespaceInfo)
         {
             this.namespaceInfo = namespaceInfo;
@@ -48,16 +57,25 @@ namespace Kapitan.ResourceGenerator
         {
             return schema.Properties.Select(p => new PropertyDefinition()
             {
-                Name = p.Key,
-                Description = p.Value.Description,
+                Name = GetProperPropertyName(p.Key),
+                Description = p.Value.Description?.Replace("*", "&#42;"),
                 Type = TranslateType(p.Value)
             });
+        }
+
+        private string GetProperPropertyName(string name)
+        {
+            if (ReservedPropertyNames.ContainsKey(name)) return ReservedPropertyNames[name];
+
+            return name;
         }
 
         private string GetTypeNameFromId(string id)
         {
             var key = StripPrefix(id);
             var typeName = id.Replace(key, "").Trim('.');
+
+            if (typeName == "JSONSchemaProps") return "Microsoft.OpenApi.Models.OpenApiSchema";
             if (namespaceInfo.ContainsKey(key))
             {
                 var versionInfo = namespaceInfo[key];

@@ -2,7 +2,7 @@
   "profiles": {
     "Kapitan.ResourceGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "c:\\temp\\swagger.json c:\\temp\\src"
+      "commandLineArgs": "c:\\temp\\swagger.json C:\\Users\\emontgomery\\source\\repos\\Kapitan\\src\\Kapitan.Kubernetes"
     }
   }
 }

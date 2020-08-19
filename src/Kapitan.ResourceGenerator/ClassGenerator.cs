@@ -35,6 +35,11 @@ namespace Kapitan.ResourceGenerator
 
         public async Task WriteCodeFileAsync(ApiTypeDefinition typedef)
         {
+            if (typedef.TypeName == "JSONSchemaProps")
+            {
+                return;
+            }
+
             if (kubernetesObjectTemplate == null) throw new InvalidOperationException("InitializeAsync must be called before any code files can be written");
 
             var template = subobjectTemplate;

@@ -8,9 +8,7 @@ namespace Kapitan.Kubernetes{{Namespace}}
     public partial class {{TypeName}}
     {
 {{~ for $property in PropertyDefinitions ~}}
-        /// <summary>
-        /// {{$property.Description}}
-        /// </summary>
+        /** <summary>{{$property.Description}}</summary> */
         public {{$property.Type}} {{$property.Name}} { get; set; }
 {{~ end ~}}
     }
