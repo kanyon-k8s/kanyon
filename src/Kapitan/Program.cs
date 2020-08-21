@@ -18,8 +18,17 @@ namespace Kapitan
         [Option("-f")]
         public string ManifestSource { get; set; }
 
+        [Option("-v")]
+        public bool Verbose { get; set; }
+
         private async System.Threading.Tasks.Task OnExecuteAsync()
         {
+            if (!File.Exists(ManifestSource))
+            {
+                Console.Error.WriteLine($"Could not find manifest {ManifestSource}. Exiting...");
+                return;
+            }
+
             var providers = new List<IManifestConfigurationProvider>()
             {
                 new EnvironmentManifestConfigurationProvider()
@@ -31,7 +40,8 @@ namespace Kapitan
             }
 
             var processor = new ManifestProcessor(providers);
-            var pipeline = new ManifestPipeline(processor);
+            var loader = new ManifestLoader() { Verbose = Verbose };
+            var pipeline = new ManifestPipeline(processor, loader) ;
             await pipeline.ExecutePipeline(new System.IO.FileInfo(ManifestSource));
         }
     }

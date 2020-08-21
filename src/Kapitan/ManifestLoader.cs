@@ -13,10 +13,11 @@ namespace Kapitan
 {
     public class ManifestLoader
     {
+        public bool Verbose { get; set; }
         public async Task<Manifest> LoadManifest(FileInfo file)
         {
             var console = new ScriptConsole(Console.Error, Console.In, Console.Error);
-            var logger = LogHelper.CreateLogFactory("debug");
+            var logger = LogHelper.CreateLogFactory(Verbose ? "debug" : "info");
 
             var manifestSource = File.ReadAllText(file.FullName);
 

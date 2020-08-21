@@ -9,16 +9,16 @@ namespace Kapitan
     public class ManifestPipeline
     {
         private readonly ManifestProcessor processor;
+        private readonly ManifestLoader loader;
 
-        public ManifestPipeline(ManifestProcessor processor)
+        public ManifestPipeline(ManifestProcessor processor, ManifestLoader loader)
         {
             this.processor = processor;
+            this.loader = loader;
         }
 
         public async Task ExecutePipeline(FileInfo file)
         {
-            // Build args
-            var loader = new ManifestLoader();
             var manifest = await loader.LoadManifest(file);
 
             var config = processor.BuildConfiguration();
