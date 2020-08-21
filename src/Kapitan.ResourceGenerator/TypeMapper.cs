@@ -97,11 +97,11 @@ namespace Kapitan.ResourceGenerator
                     if (value.Items.Reference?.Id != null)
                     {
                         var id = value.Items.Reference.Id;
-                        return $"List<{GetTypeNameFromId(id)}>";
+                        return $"IEnumerable<{GetTypeNameFromId(id)}>";
                     }
                     else
                     {
-                        return $"List<{TranslateType(value.Items)}>";
+                        return $"IEnumerable<{TranslateType(value.Items)}>";
                     }
                 default: return "object";
             }
