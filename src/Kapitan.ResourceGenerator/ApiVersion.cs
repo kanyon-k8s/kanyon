@@ -13,6 +13,12 @@ namespace Kapitan.ResourceGenerator
 
         }
 
+        public ApiVersion(string group, string version)
+        {
+            Group = group;
+            Version = version;
+        }
+
         public ApiVersion(IOpenApiExtension extension)
         {
             if (extension is OpenApiArray array)

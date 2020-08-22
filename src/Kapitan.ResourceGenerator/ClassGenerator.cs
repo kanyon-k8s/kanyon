@@ -43,11 +43,13 @@ namespace Kapitan.ResourceGenerator
             if (kubernetesObjectTemplate == null) throw new InvalidOperationException("InitializeAsync must be called before any code files can be written");
 
             var template = subobjectTemplate;
-            if (typedef.Schema.Extensions.ContainsKey("x-kubernetes-group-version-kind"))
+            if (typedef.IsManifestObject)
             {
                 template = kubernetesObjectTemplate;
                 typedef.PropertyDefinitions = typedef.PropertyDefinitions.SkipWhile(pd => BaseObjectIgnoredProperties.Contains(pd.Name));
             }
+
+            // Add rules execution engine
 
             var content = await template.RenderAsync(typedef, member => member.Name);
 

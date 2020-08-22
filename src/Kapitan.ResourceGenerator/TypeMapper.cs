@@ -1,4 +1,5 @@
 ﻿using Humanizer;
+using Kapitan.ResourceGenerator.Heuristics;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Kapitan.ResourceGenerator
     public class TypeMapper
     {
         private readonly Dictionary<string, ApiVersion> namespaceInfo;
-
+        private readonly IManifestObjectHeuristic heuristic;
         private Dictionary<string, string> ReservedPropertyNames = new Dictionary<string, string>
         {
             { "namespace", "@namespace" },
@@ -24,9 +25,10 @@ namespace Kapitan.ResourceGenerator
             { "continue", "@continue" }
         };
 
-        public TypeMapper(Dictionary<string, ApiVersion> namespaceInfo)
+        public TypeMapper(Dictionary<string, ApiVersion> namespaceInfo, IManifestObjectHeuristic heuristic)
         {
             this.namespaceInfo = namespaceInfo;
+            this.heuristic = heuristic;
         }
 
         public ApiTypeDefinition BuildTypeDefinition(string fullName, OpenApiSchema value)
@@ -49,6 +51,7 @@ namespace Kapitan.ResourceGenerator
             typedef.TypeName = fullName.Replace(namespaceKey, string.Empty).Trim('.');            
             typedef.Schema = value;
             typedef.PropertyDefinitions = BuildPropertyDefinitions(value);
+            typedef.IsManifestObject = heuristic.Detect(value);
 
             return typedef;
         }

@@ -15,5 +15,6 @@ namespace Kapitan.ResourceGenerator
 
         public string Directory { get; set; }
         public IEnumerable<PropertyDefinition> PropertyDefinitions { get; set; }
+        public bool IsManifestObject { get; internal set; }
     }
 }
