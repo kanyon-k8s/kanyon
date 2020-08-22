@@ -6,6 +6,16 @@
 
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>kapitan</ToolCommandName>
+
+    <Authors>Eric Montgomery</Authors>
+    <RepositoryUrl>https://github.com/ermontgo/Kapitan</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <Description>Kapitan provides a type-safe, intelli-sense capable, parameterizable definition language for defining Kubernetes objects. Kapitan renders these manifests into a YAML file to be leveraged by kubectl or any other client that consumes YAML</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/ermontgo/Kapitan</PackageProjectUrl>
+    <PackageTags>Kubernetes</PackageTags>
+    <VersionPrefix>1.0.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +27,13 @@
   <ItemGroup>
     <ProjectReference Include="..\Kapitan.Core\Kapitan.Core.csproj" />
     <ProjectReference Include="..\Kapitan.Kubernetes\Kapitan.Kubernetes.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -6,6 +6,16 @@
 
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>kapitan</ToolCommandName>
+
+    <Authors>Eric Montgomery</Authors>
+    <RepositoryUrl>https://github.com/ermontgo/Kapitan</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <Description>Kapitan.ResourceGenerator generates Kapitan Manifest objects out of an OpenAPI (Swagger) description of an API Version</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/ermontgo/Kapitan</PackageProjectUrl>
+    <PackageTags>Kubernetes</PackageTags>
+    <VersionPrefix>1.0.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>

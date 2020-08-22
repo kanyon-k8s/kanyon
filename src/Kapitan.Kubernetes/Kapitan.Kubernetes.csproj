@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+
+    <Authors>Eric Montgomery</Authors>
+    <RepositoryUrl>https://github.com/ermontgo/Kapitan</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <Description>Kapitan.Kubernetes provides all of the objects exposed by the standard Kubernetes API as Manifest objects that can be included in a Kapitan manifest. </Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/ermontgo/Kapitan</PackageProjectUrl>
+    <PackageTags>Kubernetes</PackageTags>
+    <VersionPrefix>1.0.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
