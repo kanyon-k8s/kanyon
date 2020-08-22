@@ -23,4 +23,11 @@
     <ProjectReference Include="..\Kapitan.Core\Kapitan.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
 </Project>
