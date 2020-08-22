@@ -1,9 +1,9 @@
 name: .NET Core
 
-on:
-  push:
-    branches: 
-      - master
+on: 
+  release:
+    types:
+      [released]
 
 jobs:
   build:
@@ -17,9 +17,9 @@ jobs:
       with:
         dotnet-version: 3.1.x
     - name: Build Kapitan with dotnet
-      run: dotnet build --configuration Release src/Kapitan.sln --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
+      run: dotnet build --configuration Release src/Kapitan.sln
     - name: Package Kapitan
-      run: dotnet pack --configuration Release src/Kapitan.sln --version-suffix prerelease-$(date +%Y%m%d%H%M%S) -o ../artifacts/
+      run: dotnet pack --configuration Release src/Kapitan.sln -o ../artifacts/
     - name: Publish All
       run: |
            for f in ../artifacts/*.nupkg
