@@ -8,7 +8,7 @@ namespace Kapitan.Kubernetes.Admissionregistration.V1beta1
     public partial class ValidatingWebhook
     {
         /** <summary>AdmissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy. Default to `['v1beta1']`.</summary> */
-        public List<string> admissionReviewVersions { get; set; }
+        public IEnumerable<string> admissionReviewVersions { get; set; }
         /** <summary>WebhookClientConfig contains the information to make a TLS connection with the webhook</summary> */
         public Admissionregistration.V1beta1.WebhookClientConfig clientConfig { get; set; }
         /** <summary>FailurePolicy defines how unrecognized errors from the admission endpoint are handled - allowed values are Ignore or Fail. Defaults to Ignore.</summary> */
@@ -28,7 +28,7 @@ Defaults to "Exact"</summary> */
         /** <summary>A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.</summary> */
         public Core.V1.LabelSelector objectSelector { get; set; }
         /** <summary>Rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects.</summary> */
-        public List<Admissionregistration.V1beta1.RuleWithOperations> rules { get; set; }
+        public IEnumerable<Admissionregistration.V1beta1.RuleWithOperations> rules { get; set; }
         /** <summary>SideEffects states whether this webhook has side effects. Acceptable values are: Unknown, None, Some, NoneOnDryRun Webhooks with side effects MUST implement a reconciliation system, since a request may be rejected by a future step in the admission change and the side effects therefore need to be undone. Requests with the dryRun attribute will be auto-rejected if they match a webhook with sideEffects == Unknown or Some. Defaults to Unknown.</summary> */
         public string sideEffects { get; set; }
         /** <summary>TimeoutSeconds specifies the timeout for this webhook. After the timeout passes, the webhook call will be ignored or the API call will fail based on the failure policy. The timeout value must be between 1 and 30 seconds. Default to 30 seconds.</summary> */

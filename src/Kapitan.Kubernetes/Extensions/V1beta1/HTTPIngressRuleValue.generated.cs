@@ -8,6 +8,6 @@ namespace Kapitan.Kubernetes.Extensions.V1beta1
     public partial class HTTPIngressRuleValue
     {
         /** <summary>A collection of paths that map requests to backends.</summary> */
-        public List<Extensions.V1beta1.HTTPIngressPath> paths { get; set; }
+        public IEnumerable<Extensions.V1beta1.HTTPIngressPath> paths { get; set; }
     }
 }

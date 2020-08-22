@@ -22,6 +22,6 @@ namespace Kapitan.Kubernetes.Rbac.V1
         /** <summary>ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.</summary> */
         public Core.V1.ObjectMeta metadata { get; set; }
         /** <summary>Rules holds all the PolicyRules for this ClusterRole</summary> */
-        public List<Rbac.V1.PolicyRule> rules { get; set; }
+        public IEnumerable<Rbac.V1.PolicyRule> rules { get; set; }
     }
 }

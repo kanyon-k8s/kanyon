@@ -8,6 +8,6 @@ namespace Kapitan.Kubernetes.Flowcontrol.V1alpha1
     public partial class FlowSchemaStatus
     {
         /** <summary>`conditions` is a list of the current states of FlowSchema.</summary> */
-        public List<Flowcontrol.V1alpha1.FlowSchemaCondition> conditions { get; set; }
+        public IEnumerable<Flowcontrol.V1alpha1.FlowSchemaCondition> conditions { get; set; }
     }
 }

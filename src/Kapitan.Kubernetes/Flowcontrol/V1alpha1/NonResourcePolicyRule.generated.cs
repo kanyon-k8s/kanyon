@@ -14,8 +14,8 @@ namespace Kapitan.Kubernetes.Flowcontrol.V1alpha1
   - "/hea/&#42;" also matches nothing
   - "/healthz/&#42;" matches all per-component health checks.
 "&#42;" matches all non-resource urls. if it is present, it must be the only entry. Required.</summary> */
-        public List<string> nonResourceURLs { get; set; }
+        public IEnumerable<string> nonResourceURLs { get; set; }
         /** <summary>`verbs` is a list of matching verbs and may not be empty. "&#42;" matches all verbs. If it is present, it must be the only entry. Required.</summary> */
-        public List<string> verbs { get; set; }
+        public IEnumerable<string> verbs { get; set; }
     }
 }

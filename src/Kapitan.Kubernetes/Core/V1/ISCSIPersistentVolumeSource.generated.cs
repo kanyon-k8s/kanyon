@@ -22,7 +22,7 @@ namespace Kapitan.Kubernetes.Core.V1
         /** <summary>iSCSI Target Lun number.</summary> */
         public int lun { get; set; }
         /** <summary>iSCSI Target Portal List. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).</summary> */
-        public List<string> portals { get; set; }
+        public IEnumerable<string> portals { get; set; }
         /** <summary>ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false.</summary> */
         public bool readOnly { get; set; }
         /** <summary>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</summary> */

@@ -18,6 +18,6 @@ namespace Kapitan.Kubernetes.Rbac.V1alpha1
         /** <summary>RoleRef contains information that points to the role being used</summary> */
         public Rbac.V1alpha1.RoleRef roleRef { get; set; }
         /** <summary>Subjects holds references to the objects the role applies to.</summary> */
-        public List<Rbac.V1alpha1.Subject> subjects { get; set; }
+        public IEnumerable<Rbac.V1alpha1.Subject> subjects { get; set; }
     }
 }

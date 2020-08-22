@@ -8,6 +8,6 @@ namespace Kapitan.Kubernetes.Core.V1
     public partial class NodeSelector
     {
         /** <summary>Required. A list of node selector terms. The terms are ORed.</summary> */
-        public List<Core.V1.NodeSelectorTerm> nodeSelectorTerms { get; set; }
+        public IEnumerable<Core.V1.NodeSelectorTerm> nodeSelectorTerms { get; set; }
     }
 }

@@ -22,6 +22,6 @@ namespace Kapitan.Kubernetes.Apps.V1
         /** <summary>StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to perform updates. It includes any additional parameters necessary to perform the update for the indicated strategy.</summary> */
         public Apps.V1.StatefulSetUpdateStrategy updateStrategy { get; set; }
         /** <summary>volumeClaimTemplates is a list of claims that pods are allowed to reference. The StatefulSet controller is responsible for mapping network identities to claims in a way that maintains the identity of a pod. Every claim in this list must have at least one matching (by name) volumeMount in one container in the template. A claim in this list takes precedence over any volumes in the template, with the same name.</summary> */
-        public List<Core.V1.PersistentVolumeClaim> volumeClaimTemplates { get; set; }
+        public IEnumerable<Core.V1.PersistentVolumeClaim> volumeClaimTemplates { get; set; }
     }
 }

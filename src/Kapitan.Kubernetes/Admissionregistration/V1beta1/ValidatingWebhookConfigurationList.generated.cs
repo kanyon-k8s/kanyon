@@ -14,7 +14,7 @@ namespace Kapitan.Kubernetes.Admissionregistration.V1beta1
         public string Kind => "ValidatingWebhookConfigurationList";
 
         /** <summary>List of ValidatingWebhookConfiguration.</summary> */
-        public List<Admissionregistration.V1beta1.ValidatingWebhookConfiguration> items { get; set; }
+        public IEnumerable<Admissionregistration.V1beta1.ValidatingWebhookConfiguration> items { get; set; }
         /** <summary>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</summary> */
         public string kind { get; set; }
         /** <summary>ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.</summary> */

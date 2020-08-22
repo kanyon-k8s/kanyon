@@ -8,7 +8,7 @@ namespace Kapitan.Kubernetes.Core.V1
     public partial class StatusDetails
     {
         /** <summary>The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.</summary> */
-        public List<Core.V1.StatusCause> causes { get; set; }
+        public IEnumerable<Core.V1.StatusCause> causes { get; set; }
         /** <summary>The group attribute of the resource associated with the status StatusReason.</summary> */
         public string group { get; set; }
         /** <summary>The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</summary> */

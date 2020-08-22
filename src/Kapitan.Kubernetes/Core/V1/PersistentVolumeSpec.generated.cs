@@ -8,7 +8,7 @@ namespace Kapitan.Kubernetes.Core.V1
     public partial class PersistentVolumeSpec
     {
         /** <summary>AccessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes</summary> */
-        public List<string> accessModes { get; set; }
+        public IEnumerable<string> accessModes { get; set; }
         /** <summary>Represents a Persistent Disk resource in AWS.
 
 An AWS EBS disk must exist before mounting to a container. The disk must also be in the same AWS zone as the kubelet. An AWS EBS disk can only be mounted as read/write once. AWS EBS volumes support ownership management and SELinux relabeling.</summary> */
@@ -46,7 +46,7 @@ A GCE PD must exist before mounting to a container. The disk must also be in the
         /** <summary>Local represents directly-attached storage with node affinity (Beta feature)</summary> */
         public Core.V1.LocalVolumeSource local { get; set; }
         /** <summary>A list of mount options, e.g. ["ro", "soft"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options</summary> */
-        public List<string> mountOptions { get; set; }
+        public IEnumerable<string> mountOptions { get; set; }
         /** <summary>Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling.</summary> */
         public Core.V1.NFSVolumeSource nfs { get; set; }
         /** <summary>VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from.</summary> */

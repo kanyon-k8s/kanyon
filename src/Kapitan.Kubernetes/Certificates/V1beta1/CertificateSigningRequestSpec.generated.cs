@@ -10,7 +10,7 @@ namespace Kapitan.Kubernetes.Certificates.V1beta1
         /** <summary>Extra information about the requesting user. See user.Info interface for details.</summary> */
         public object extra { get; set; }
         /** <summary>Group information about the requesting user. See user.Info interface for details.</summary> */
-        public List<string> groups { get; set; }
+        public IEnumerable<string> groups { get; set; }
         /** <summary>Base64-encoded PKCS#10 CSR data</summary> */
         public string request { get; set; }
         /** <summary>Requested signer for the request. It is a qualified name in the form: `scope-hostname.io/name`. If empty, it will be defaulted:
@@ -49,7 +49,7 @@ Valid values are:
  "ocsp signing",
  "microsoft sgc",
  "netscape sgc"</summary> */
-        public List<string> usages { get; set; }
+        public IEnumerable<string> usages { get; set; }
         /** <summary>Information about the requesting user. See user.Info interface for details.</summary> */
         public string username { get; set; }
     }

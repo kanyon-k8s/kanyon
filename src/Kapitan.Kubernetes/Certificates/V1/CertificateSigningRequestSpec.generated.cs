@@ -10,7 +10,7 @@ namespace Kapitan.Kubernetes.Certificates.V1
         /** <summary>extra contains extra attributes of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</summary> */
         public object extra { get; set; }
         /** <summary>groups contains group membership of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</summary> */
-        public List<string> groups { get; set; }
+        public IEnumerable<string> groups { get; set; }
         /** <summary>request contains an x509 certificate signing request encoded in a "CERTIFICATE REQUEST" PEM block. When serialized as JSON or YAML, the data is additionally base64-encoded.</summary> */
         public string request { get; set; }
         /** <summary>signerName indicates the requested signer, and is a qualified name.
@@ -51,7 +51,7 @@ Valid values are:
  "code signing", "email protection", "s/mime",
  "ipsec end system", "ipsec tunnel", "ipsec user",
  "timestamping", "ocsp signing", "microsoft sgc", "netscape sgc"</summary> */
-        public List<string> usages { get; set; }
+        public IEnumerable<string> usages { get; set; }
         /** <summary>username contains the name of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable.</summary> */
         public string username { get; set; }
     }

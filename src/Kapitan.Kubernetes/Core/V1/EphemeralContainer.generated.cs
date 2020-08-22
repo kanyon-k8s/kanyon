@@ -8,13 +8,13 @@ namespace Kapitan.Kubernetes.Core.V1
     public partial class EphemeralContainer
     {
         /** <summary>Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell</summary> */
-        public List<string> args { get; set; }
+        public IEnumerable<string> args { get; set; }
         /** <summary>Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell</summary> */
-        public List<string> command { get; set; }
+        public IEnumerable<string> command { get; set; }
         /** <summary>List of environment variables to set in the container. Cannot be updated.</summary> */
-        public List<Core.V1.EnvVar> env { get; set; }
+        public IEnumerable<Core.V1.EnvVar> env { get; set; }
         /** <summary>List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.</summary> */
-        public List<Core.V1.EnvFromSource> envFrom { get; set; }
+        public IEnumerable<Core.V1.EnvFromSource> envFrom { get; set; }
         /** <summary>Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images</summary> */
         public string image { get; set; }
         /** <summary>Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images</summary> */
@@ -26,7 +26,7 @@ namespace Kapitan.Kubernetes.Core.V1
         /** <summary>Name of the ephemeral container specified as a DNS_LABEL. This name must be unique among all containers, init containers and ephemeral containers.</summary> */
         public string name { get; set; }
         /** <summary>Ports are not allowed for ephemeral containers.</summary> */
-        public List<Core.V1.ContainerPort> ports { get; set; }
+        public IEnumerable<Core.V1.ContainerPort> ports { get; set; }
         /** <summary>Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.</summary> */
         public Core.V1.Probe readinessProbe { get; set; }
         /** <summary>ResourceRequirements describes the compute resource requirements.</summary> */
@@ -48,9 +48,9 @@ namespace Kapitan.Kubernetes.Core.V1
         /** <summary>Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false.</summary> */
         public bool tty { get; set; }
         /** <summary>volumeDevices is the list of block devices to be used by the container.</summary> */
-        public List<Core.V1.VolumeDevice> volumeDevices { get; set; }
+        public IEnumerable<Core.V1.VolumeDevice> volumeDevices { get; set; }
         /** <summary>Pod volumes to mount into the container's filesystem. Cannot be updated.</summary> */
-        public List<Core.V1.VolumeMount> volumeMounts { get; set; }
+        public IEnumerable<Core.V1.VolumeMount> volumeMounts { get; set; }
         /** <summary>Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.</summary> */
         public string workingDir { get; set; }
     }

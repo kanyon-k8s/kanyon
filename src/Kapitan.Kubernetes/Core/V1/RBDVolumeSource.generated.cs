@@ -14,7 +14,7 @@ namespace Kapitan.Kubernetes.Core.V1
         /** <summary>Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</summary> */
         public string keyring { get; set; }
         /** <summary>A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</summary> */
-        public List<string> monitors { get; set; }
+        public IEnumerable<string> monitors { get; set; }
         /** <summary>The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</summary> */
         public string pool { get; set; }
         /** <summary>ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</summary> */

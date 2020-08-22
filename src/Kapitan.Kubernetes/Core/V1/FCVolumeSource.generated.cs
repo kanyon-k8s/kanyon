@@ -14,8 +14,8 @@ namespace Kapitan.Kubernetes.Core.V1
         /** <summary>Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</summary> */
         public bool readOnly { get; set; }
         /** <summary>Optional: FC target worldwide names (WWNs)</summary> */
-        public List<string> targetWWNs { get; set; }
+        public IEnumerable<string> targetWWNs { get; set; }
         /** <summary>Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.</summary> */
-        public List<string> wwids { get; set; }
+        public IEnumerable<string> wwids { get; set; }
     }
 }

@@ -10,6 +10,6 @@ namespace Kapitan.Kubernetes.Certificates.V1beta1
         /** <summary>If request was approved, the controller will place the issued certificate here.</summary> */
         public string certificate { get; set; }
         /** <summary>Conditions applied to the request, such as approval or denial.</summary> */
-        public List<Certificates.V1beta1.CertificateSigningRequestCondition> conditions { get; set; }
+        public IEnumerable<Certificates.V1beta1.CertificateSigningRequestCondition> conditions { get; set; }
     }
 }

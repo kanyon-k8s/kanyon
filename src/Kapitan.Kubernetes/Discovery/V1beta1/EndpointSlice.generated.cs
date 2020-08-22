@@ -18,12 +18,12 @@ namespace Kapitan.Kubernetes.Discovery.V1beta1
         /** <summary>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources</summary> */
         public string apiVersion { get; set; }
         /** <summary>endpoints is a list of unique endpoints in this slice. Each slice may include a maximum of 1000 endpoints.</summary> */
-        public List<Discovery.V1beta1.Endpoint> endpoints { get; set; }
+        public IEnumerable<Discovery.V1beta1.Endpoint> endpoints { get; set; }
         /** <summary>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</summary> */
         public string kind { get; set; }
         /** <summary>ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.</summary> */
         public Core.V1.ObjectMeta metadata { get; set; }
         /** <summary>ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates "all ports". Each slice may include a maximum of 100 ports.</summary> */
-        public List<Discovery.V1beta1.EndpointPort> ports { get; set; }
+        public IEnumerable<Discovery.V1beta1.EndpointPort> ports { get; set; }
     }
 }

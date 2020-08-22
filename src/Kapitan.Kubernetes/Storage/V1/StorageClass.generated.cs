@@ -16,7 +16,7 @@ namespace Kapitan.Kubernetes.Storage.V1
         /** <summary>AllowVolumeExpansion shows whether the storage class allow volume expand</summary> */
         public bool allowVolumeExpansion { get; set; }
         /** <summary>Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.</summary> */
-        public List<Core.V1.TopologySelectorTerm> allowedTopologies { get; set; }
+        public IEnumerable<Core.V1.TopologySelectorTerm> allowedTopologies { get; set; }
         /** <summary>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources</summary> */
         public string apiVersion { get; set; }
         /** <summary>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</summary> */
@@ -24,7 +24,7 @@ namespace Kapitan.Kubernetes.Storage.V1
         /** <summary>ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.</summary> */
         public Core.V1.ObjectMeta metadata { get; set; }
         /** <summary>Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.</summary> */
-        public List<string> mountOptions { get; set; }
+        public IEnumerable<string> mountOptions { get; set; }
         /** <summary>Parameters holds the parameters for the provisioner that should create volumes of this storage class.</summary> */
         public object parameters { get; set; }
         /** <summary>Provisioner indicates the type of the provisioner.</summary> */

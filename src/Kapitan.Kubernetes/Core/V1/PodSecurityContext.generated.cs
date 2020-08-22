@@ -26,9 +26,9 @@ If unset, the Kubelet will not modify the ownership and permissions of any volum
         /** <summary>SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set.</summary> */
         public Core.V1.SeccompProfile seccompProfile { get; set; }
         /** <summary>A list of groups applied to the first process run in each container, in addition to the container's primary GID.  If unspecified, no groups will be added to any container.</summary> */
-        public List<int> supplementalGroups { get; set; }
+        public IEnumerable<int> supplementalGroups { get; set; }
         /** <summary>Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch.</summary> */
-        public List<Core.V1.Sysctl> sysctls { get; set; }
+        public IEnumerable<Core.V1.Sysctl> sysctls { get; set; }
         /** <summary>WindowsSecurityContextOptions contain Windows-specific options and credentials.</summary> */
         public Core.V1.WindowsSecurityContextOptions windowsOptions { get; set; }
     }

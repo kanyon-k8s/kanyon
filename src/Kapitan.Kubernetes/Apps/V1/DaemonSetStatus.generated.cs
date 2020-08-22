@@ -10,7 +10,7 @@ namespace Kapitan.Kubernetes.Apps.V1
         /** <summary>Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.</summary> */
         public int collisionCount { get; set; }
         /** <summary>Represents the latest available observations of a DaemonSet's current state.</summary> */
-        public List<Apps.V1.DaemonSetCondition> conditions { get; set; }
+        public IEnumerable<Apps.V1.DaemonSetCondition> conditions { get; set; }
         /** <summary>The number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/</summary> */
         public int currentNumberScheduled { get; set; }
         /** <summary>The total number of nodes that should be running the daemon pod (including nodes correctly running the daemon pod). More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/</summary> */

@@ -12,7 +12,7 @@ namespace Kapitan.Kubernetes.Apps.V1
         /** <summary>Count of hash collisions for the Deployment. The Deployment controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.</summary> */
         public int collisionCount { get; set; }
         /** <summary>Represents the latest available observations of a deployment's current state.</summary> */
-        public List<Apps.V1.DeploymentCondition> conditions { get; set; }
+        public IEnumerable<Apps.V1.DeploymentCondition> conditions { get; set; }
         /** <summary>The generation observed by the deployment controller.</summary> */
         public int observedGeneration { get; set; }
         /** <summary>Total number of ready pods targeted by this deployment.</summary> */

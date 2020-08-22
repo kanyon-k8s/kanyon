@@ -14,7 +14,7 @@ namespace Kapitan.Kubernetes.Apps.V1
         public string Kind => "ControllerRevisionList";
 
         /** <summary>Items is the list of ControllerRevisions</summary> */
-        public List<Apps.V1.ControllerRevision> items { get; set; }
+        public IEnumerable<Apps.V1.ControllerRevision> items { get; set; }
         /** <summary>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</summary> */
         public string kind { get; set; }
         /** <summary>ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.</summary> */

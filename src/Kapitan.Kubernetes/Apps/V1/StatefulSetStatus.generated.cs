@@ -10,7 +10,7 @@ namespace Kapitan.Kubernetes.Apps.V1
         /** <summary>collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.</summary> */
         public int collisionCount { get; set; }
         /** <summary>Represents the latest available observations of a statefulset's current state.</summary> */
-        public List<Apps.V1.StatefulSetCondition> conditions { get; set; }
+        public IEnumerable<Apps.V1.StatefulSetCondition> conditions { get; set; }
         /** <summary>currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.</summary> */
         public int currentReplicas { get; set; }
         /** <summary>currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas).</summary> */

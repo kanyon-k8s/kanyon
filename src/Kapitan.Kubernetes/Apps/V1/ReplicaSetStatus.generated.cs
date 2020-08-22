@@ -10,7 +10,7 @@ namespace Kapitan.Kubernetes.Apps.V1
         /** <summary>The number of available replicas (ready for at least minReadySeconds) for this replica set.</summary> */
         public int availableReplicas { get; set; }
         /** <summary>Represents the latest available observations of a replica set's current state.</summary> */
-        public List<Apps.V1.ReplicaSetCondition> conditions { get; set; }
+        public IEnumerable<Apps.V1.ReplicaSetCondition> conditions { get; set; }
         /** <summary>The number of pods that have labels matching the labels of the pod template of the replicaset.</summary> */
         public int fullyLabeledReplicas { get; set; }
         /** <summary>ObservedGeneration reflects the generation of the most recently observed ReplicaSet.</summary> */

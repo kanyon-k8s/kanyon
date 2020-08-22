@@ -8,8 +8,8 @@ namespace Kapitan.Kubernetes.Core.V1
     public partial class Capabilities
     {
         /** <summary>Added capabilities</summary> */
-        public List<string> add { get; set; }
+        public IEnumerable<string> add { get; set; }
         /** <summary>Removed capabilities</summary> */
-        public List<string> drop { get; set; }
+        public IEnumerable<string> drop { get; set; }
     }
 }

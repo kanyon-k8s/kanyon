@@ -8,7 +8,7 @@ namespace Kapitan.Kubernetes.Core.V1
     public partial class PersistentVolumeClaimSpec
     {
         /** <summary>AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1</summary> */
-        public List<string> accessModes { get; set; }
+        public IEnumerable<string> accessModes { get; set; }
         /** <summary>TypedLocalObjectReference contains enough information to let you locate the typed referenced object inside the same namespace.</summary> */
         public Core.V1.TypedLocalObjectReference dataSource { get; set; }
         /** <summary>ResourceRequirements describes the compute resource requirements.</summary> */

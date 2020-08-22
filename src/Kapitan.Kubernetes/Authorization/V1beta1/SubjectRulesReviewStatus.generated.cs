@@ -12,8 +12,8 @@ namespace Kapitan.Kubernetes.Authorization.V1beta1
         /** <summary>Incomplete is true when the rules returned by this call are incomplete. This is most commonly encountered when an authorizer, such as an external authorizer, doesn't support rules evaluation.</summary> */
         public bool incomplete { get; set; }
         /** <summary>NonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.</summary> */
-        public List<Authorization.V1beta1.NonResourceRule> nonResourceRules { get; set; }
+        public IEnumerable<Authorization.V1beta1.NonResourceRule> nonResourceRules { get; set; }
         /** <summary>ResourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.</summary> */
-        public List<Authorization.V1beta1.ResourceRule> resourceRules { get; set; }
+        public IEnumerable<Authorization.V1beta1.ResourceRule> resourceRules { get; set; }
     }
 }

@@ -31,6 +31,6 @@ When serialized as JSON or YAML, the data is additionally base64-encoded, so it 
     )</summary> */
         public string certificate { get; set; }
         /** <summary>conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".</summary> */
-        public List<Certificates.V1.CertificateSigningRequestCondition> conditions { get; set; }
+        public IEnumerable<Certificates.V1.CertificateSigningRequestCondition> conditions { get; set; }
     }
 }

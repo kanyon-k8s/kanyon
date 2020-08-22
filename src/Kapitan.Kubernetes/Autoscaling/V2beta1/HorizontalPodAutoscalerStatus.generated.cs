@@ -8,9 +8,9 @@ namespace Kapitan.Kubernetes.Autoscaling.V2beta1
     public partial class HorizontalPodAutoscalerStatus
     {
         /** <summary>conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.</summary> */
-        public List<Autoscaling.V2beta1.HorizontalPodAutoscalerCondition> conditions { get; set; }
+        public IEnumerable<Autoscaling.V2beta1.HorizontalPodAutoscalerCondition> conditions { get; set; }
         /** <summary>currentMetrics is the last read state of the metrics used by this autoscaler.</summary> */
-        public List<Autoscaling.V2beta1.MetricStatus> currentMetrics { get; set; }
+        public IEnumerable<Autoscaling.V2beta1.MetricStatus> currentMetrics { get; set; }
         /** <summary>currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.</summary> */
         public int currentReplicas { get; set; }
         /** <summary>desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.</summary> */

@@ -14,7 +14,7 @@ namespace Kapitan.Kubernetes.Node.V1alpha1
         public string Kind => "RuntimeClassList";
 
         /** <summary>Items is a list of schema objects.</summary> */
-        public List<Node.V1alpha1.RuntimeClass> items { get; set; }
+        public IEnumerable<Node.V1alpha1.RuntimeClass> items { get; set; }
         /** <summary>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</summary> */
         public string kind { get; set; }
         /** <summary>ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.</summary> */

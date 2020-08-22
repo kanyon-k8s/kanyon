@@ -12,6 +12,6 @@ namespace Kapitan.Kubernetes.Core.V1
         /** <summary>A scope selector represents the AND of the selectors represented by the scoped-resource selector requirements.</summary> */
         public Core.V1.ScopeSelector scopeSelector { get; set; }
         /** <summary>A collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects.</summary> */
-        public List<string> scopes { get; set; }
+        public IEnumerable<string> scopes { get; set; }
     }
 }

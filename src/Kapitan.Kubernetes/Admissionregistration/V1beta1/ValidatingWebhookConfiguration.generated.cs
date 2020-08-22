@@ -16,6 +16,6 @@ namespace Kapitan.Kubernetes.Admissionregistration.V1beta1
         /** <summary>ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.</summary> */
         public Core.V1.ObjectMeta metadata { get; set; }
         /** <summary>Webhooks is a list of webhooks and the affected resources and operations.</summary> */
-        public List<Admissionregistration.V1beta1.ValidatingWebhook> webhooks { get; set; }
+        public IEnumerable<Admissionregistration.V1beta1.ValidatingWebhook> webhooks { get; set; }
     }
 }
