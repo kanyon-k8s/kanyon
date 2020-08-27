@@ -23,7 +23,8 @@ namespace Kapitan.ResourceGenerator
             { "object", "@object" },
             { "default", "@default" },
             { "operator", "@operator" },
-            { "continue", "@continue" }
+            { "continue", "@continue" },
+            { "delegate", "@delegate" }
         };
 
         public TypeMapper(Dictionary<string, ApiVersion> namespaceInfo, IManifestObjectHeuristic heuristic)
