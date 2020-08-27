@@ -20,10 +20,12 @@ namespace Kapitan.ResourceGenerator
         public string Group { get; set; }
         [Option("-a")]
         public string ApiVersion { get; set; }
+        [Option("-c")]
+        public string CrdSource { get; set; }
 
         public static async Task<int> Main(string[] args) => await CommandLineApplication.ExecuteAsync<Program>(args);
 
-        private async System.Threading.Tasks.Task OnExecuteAsync()
+        public async System.Threading.Tasks.Task OnExecuteAsync()
         {
             var uri = SwaggerFile;
 
@@ -32,7 +34,7 @@ namespace Kapitan.ResourceGenerator
             // TODO: allow local or HTTP
             using (var stream = File.OpenRead(uri))
             {
-                (var apiVersionProvider, var heuristic) = BuildGenerationProfile();
+                (var apiVersionProvider, var heuristic) = await BuildGenerationProfile();
                 var typeManager = new TypeDefinitionManager(heuristic, apiVersionProvider);
                 var classGenerator = new ClassGenerator(new DirectoryInfo(OutputPath));
                 await classGenerator.InitializeAsync();
@@ -51,14 +53,28 @@ namespace Kapitan.ResourceGenerator
             }
         }
 
-        private (IApiVersionProvider ApiVersionProvider, IManifestObjectHeuristic Heuristic) BuildGenerationProfile()
+        private async Task<(IApiVersionProvider ApiVersionProvider, IManifestObjectHeuristic Heuristic)> BuildGenerationProfile()
         {
+            IApiVersionProvider provider = new OpenApiExtensionApiVersionProvider();
+            IManifestObjectHeuristic heuristic = new KubernetesExtensionManifestObjectHeuristic();
+
             if (!string.IsNullOrEmpty(Group) && !string.IsNullOrEmpty(ApiVersion))
             {
-                return (new ConfigurationBasedApiVersionProvider(Group, ApiVersion), new RequiredPropertyManifestObjectHeuristic());
-            }
+                provider = new ConfigurationBasedApiVersionProvider(Group, ApiVersion);
+                
+                if (!string.IsNullOrWhiteSpace(CrdSource))
+                {
+                    var crdHeuristic = new CrdTypeMatchManifestObjectHeuristic();
+                    await crdHeuristic.InitializeAsync(CrdSource);
+                    heuristic = crdHeuristic;
+                }
+                else
+                {
+                    heuristic = new RequiredPropertyManifestObjectHeuristic();
+                }
+            }            
 
-            return (new OpenApiExtensionApiVersionProvider(), new KubernetesExtensionManifestObjectHeuristic());
+            return (provider, heuristic);
         }
     }
 }

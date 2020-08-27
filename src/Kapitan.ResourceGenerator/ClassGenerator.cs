@@ -13,6 +13,7 @@ namespace Kapitan.ResourceGenerator
         private readonly DirectoryInfo root;
         private Template subobjectTemplate;
         private Template kubernetesObjectTemplate;
+        private Template enumTemplate;
 
         public static List<string> BaseObjectIgnoredProperties = new List<string> { "apiVersion", "kind", "status" };
 
@@ -25,11 +26,12 @@ namespace Kapitan.ResourceGenerator
         {
             subobjectTemplate = await LoadTemplate("SubObject.scriban");
             kubernetesObjectTemplate = await LoadTemplate("KubernetesObject.scriban");
+            enumTemplate = await LoadTemplate("EnumObject.scriban");
         }
 
         public async Task<Template> LoadTemplate(string file)
         {
-            string content = await File.ReadAllTextAsync(file);
+            string content = await File.ReadAllTextAsync(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file));
             return Template.Parse(content);
         }
 
@@ -47,6 +49,10 @@ namespace Kapitan.ResourceGenerator
             {
                 template = kubernetesObjectTemplate;
                 typedef.PropertyDefinitions = typedef.PropertyDefinitions.SkipWhile(pd => BaseObjectIgnoredProperties.Contains(pd.Name));
+            }
+            if (typedef.IsEnumObject)
+            {
+                template = enumTemplate;
             }
 
             // Add rules execution engine

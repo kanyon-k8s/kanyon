@@ -22,7 +22,7 @@ namespace Kapitan.Yaml
                     .DisableAliases()
                     .WithNamingConvention(new CamelCaseNamingConvention())
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
-                    .WithTypeConverter(new IntOrStringYamlConverter())
+                    .WithTypeConverter(new WrappedStringYamlConverter())
                     .WithEventEmitter(e => new k8s.StringQuotingEmitter(e))
                     .BuildValueSerializer();
             emitter.Emit(new StreamStart());

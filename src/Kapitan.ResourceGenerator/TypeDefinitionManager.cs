@@ -32,7 +32,7 @@ namespace Kapitan.ResourceGenerator
 
         public List<ApiTypeDefinition> BuildTypeDefinitions(OpenApiDocument spec)
         {
-            var rootTypes = spec.Components.Schemas.Where(s => heuristic.Detect(s.Value)).ToDictionary(s => s.Key, s => s.Value);
+            var rootTypes = spec.Components.Schemas.Where(s => heuristic.Detect(s.Value, s.Key)).ToDictionary(s => s.Key, s => s.Value);
             var typeMapper = GetTypeMapper(rootTypes);
 
             return spec.Components.Schemas.Select(kvp => typeMapper.BuildTypeDefinition(kvp.Key, kvp.Value)).ToList();

@@ -7,6 +7,6 @@ namespace Kapitan.ResourceGenerator.Heuristics
 {
     public interface IManifestObjectHeuristic
     {
-        bool Detect(OpenApiSchema schema);
+        bool Detect(OpenApiSchema schema, string name);
     }
 }

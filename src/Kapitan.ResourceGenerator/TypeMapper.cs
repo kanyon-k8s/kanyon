@@ -1,5 +1,6 @@
 ﻿using Humanizer;
 using Kapitan.ResourceGenerator.Heuristics;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
@@ -35,25 +36,41 @@ namespace Kapitan.ResourceGenerator
         {
             var namespaceKey = StripPrefix(fullName);
             var typedef = new ApiTypeDefinition();
+            typedef.IsManifestObject = heuristic.Detect(value, fullName);
+            typedef.IsEnumObject = value.Enum.Any();
 
             if (namespaceInfo.ContainsKey(namespaceKey))
             {
-                var groupVersion = namespaceInfo[namespaceKey];
-
-                string group = GetNormalizedGroup(groupVersion);
-                string version = GetNormalizedVersion(groupVersion);
-
-                typedef.ApiVersion = groupVersion;
-                typedef.Namespace = $".{GetDotNetNamespace(group, version)}";
-                typedef.Directory = Path.Combine(group, version);
-            }            
+                PopulateNamespaceInfo(namespaceKey, typedef);
+            }
+            else if (typedef.IsEnumObject && namespaceInfo.ContainsKey(StripPrefix(namespaceKey)))
+            {
+                PopulateNamespaceInfo(StripPrefix(namespaceKey), typedef);
+            }
 
             typedef.TypeName = fullName.Replace(namespaceKey, string.Empty).Trim('.');            
             typedef.Schema = value;
             typedef.PropertyDefinitions = BuildPropertyDefinitions(value);
-            typedef.IsManifestObject = heuristic.Detect(value);
+            typedef.EnumValues = BuildEnumValues(value);
 
             return typedef;
+        }
+
+        private IEnumerable<string> BuildEnumValues(OpenApiSchema value)
+        {
+            return value.Enum.Select(v => (v as OpenApiString)?.Value);
+        }
+
+        private void PopulateNamespaceInfo(string namespaceKey, ApiTypeDefinition typedef)
+        {
+            var groupVersion = namespaceInfo[namespaceKey];
+
+            string group = GetNormalizedGroup(groupVersion);
+            string version = GetNormalizedVersion(groupVersion);
+
+            typedef.ApiVersion = groupVersion;
+            typedef.Namespace = $".{GetDotNetNamespace(group, version)}";
+            typedef.Directory = Path.Combine(group, version);
         }
 
         public IEnumerable<PropertyDefinition> BuildPropertyDefinitions(OpenApiSchema schema)

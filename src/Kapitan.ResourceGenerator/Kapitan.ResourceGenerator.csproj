@@ -15,11 +15,13 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/ermontgo/Kapitan</PackageProjectUrl>
     <PackageTags>Kubernetes</PackageTags>
-    <VersionPrefix>1.1.0</VersionPrefix>
+    <VersionPrefix>2.0.0</VersionPrefix>
+    <AssemblyName>kapitan-resgen</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Humanizer" Version="2.8.26" />
+    <PackageReference Include="KubernetesClient" Version="2.0.29" />
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="3.0.0" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.2.2" />
     <PackageReference Include="Microsoft.OpenApi.Readers" Version="1.2.2" />
@@ -27,6 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="EnumObject.scriban">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="KubernetesObject.scriban">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

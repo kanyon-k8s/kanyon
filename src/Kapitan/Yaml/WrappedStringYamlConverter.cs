@@ -1,4 +1,4 @@
-﻿using Kapitan.Kubernetes;
+﻿using Kapitan.Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,11 +8,11 @@ using YamlDotNet.Serialization;
 
 namespace Kapitan.Yaml
 {
-    public class IntOrStringYamlConverter : IYamlTypeConverter
+    public class WrappedStringYamlConverter : IYamlTypeConverter
     {
         public bool Accepts(Type type)
         {
-            return type == typeof(IntOrString);
+            return typeof(WrappedString).IsAssignableFrom(type);
         }
 
         public object ReadYaml(IParser parser, Type type)
@@ -21,7 +21,7 @@ namespace Kapitan.Yaml
             {
                 try
                 {
-                    return new IntOrString(scalar.Value);
+                    return Activator.CreateInstance(type, scalar.Value);
                 }
                 finally
                 {
@@ -34,7 +34,7 @@ namespace Kapitan.Yaml
 
         public void WriteYaml(IEmitter emitter, object value, Type type)
         {
-            var obj = (IntOrString)value;
+            var obj = (WrappedString)value;
             emitter.Emit(new Scalar(obj.Value));
         }
     }

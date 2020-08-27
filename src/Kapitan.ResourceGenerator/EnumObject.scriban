@@ -1,0 +1,14 @@
+using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using Kapitan.Kubernetes;
+
+namespace Kapitan.Kubernetes{{Namespace}}
+{
+    public partial class {{TypeName}} : WrappedString
+    {
+{{~ for $value in EnumValues ~}}
+        public static readonly {{TypeName}} {{$value}} = "{{$value}}";
+{{~ end ~}}
+    }
+}

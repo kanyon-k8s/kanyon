@@ -8,7 +8,7 @@ namespace Kapitan.ResourceGenerator.Heuristics
 {
     public class RequiredPropertyManifestObjectHeuristic : IManifestObjectHeuristic
     {
-        public bool Detect(OpenApiSchema schema)
+        public bool Detect(OpenApiSchema schema, string name)
         {
             var requiredProperties = new[] { "apiVersion", "kind", "spec" };
             return schema.Properties.Select(p => p.Key).Intersect(requiredProperties).Count() == requiredProperties.Length;
