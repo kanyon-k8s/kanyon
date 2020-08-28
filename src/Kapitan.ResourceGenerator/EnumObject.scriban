@@ -8,6 +8,8 @@ namespace Kapitan.Kubernetes{{Namespace}}
 {
     public partial class {{TypeName}} : WrappedString
     {
+        public {{TypeName}}(string value = default) : base(value) { }
+
         public static implicit operator string({{TypeName}} v)
         {
             return v.Value;
