@@ -155,7 +155,10 @@ namespace Kapitan.ResourceGenerator
 
         public static string StripPrefix(string s)
         {
-            return s.Substring(0, s.LastIndexOf('.'));
+            var lastIdx = s.LastIndexOf('.');
+
+            if (lastIdx < 0) return s;
+            return s.Substring(0, lastIdx);
         }
     }
 }
