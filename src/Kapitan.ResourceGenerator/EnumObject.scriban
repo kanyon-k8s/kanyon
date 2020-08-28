@@ -8,6 +8,18 @@ namespace Kapitan.Kubernetes{{Namespace}}
 {
     public partial class {{TypeName}} : WrappedString
     {
+        public static implicit operator string({{TypeName}} v)
+        {
+            return v.Value;
+        }
+
+        public static implicit operator {{TypeName}}(string v)
+        {
+            if (string.IsNullOrEmpty(v)) return null;
+
+            return new {{TypeName}}(v);
+        }
+
 {{~ for $value in EnumValues ~}}
         public static readonly {{TypeName}} {{$value}} = "{{$value}}";
 {{~ end ~}}
