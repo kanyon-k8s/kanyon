@@ -35,21 +35,17 @@ namespace Kapitan.ResourceGenerator
 
         public ApiTypeDefinition BuildTypeDefinition(string fullName, OpenApiSchema value)
         {
-            var namespaceKey = StripPrefix(fullName);
             var typedef = new ApiTypeDefinition();
             typedef.IsManifestObject = heuristic.Detect(value, fullName);
             typedef.IsEnumObject = value.Enum.Any();
 
-            if (namespaceInfo.ContainsKey(namespaceKey))
+            var apiVersion = FindApiVersion(fullName);
+            if (apiVersion != null)
             {
-                PopulateNamespaceInfo(namespaceKey, typedef);
-            }
-            else if (typedef.IsEnumObject && namespaceInfo.ContainsKey(StripPrefix(namespaceKey)))
-            {
-                PopulateNamespaceInfo(StripPrefix(namespaceKey), typedef);
+                PopulateNamespaceInfo(apiVersion, typedef);
             }
 
-            typedef.TypeName = fullName.Replace(namespaceKey, string.Empty).Trim('.');            
+            typedef.TypeName = fullName.Split('.').Last();            
             typedef.Schema = value;
             typedef.PropertyDefinitions = BuildPropertyDefinitions(value);
             typedef.EnumValues = BuildEnumValues(value);
@@ -57,15 +53,22 @@ namespace Kapitan.ResourceGenerator
             return typedef;
         }
 
+        public ApiVersion FindApiVersion(string namespaceKey)
+        {
+            var key = StripPrefix(namespaceKey);
+            if (key == namespaceKey) return null;
+            if (namespaceInfo.ContainsKey(key)) return namespaceInfo[key];
+
+            return FindApiVersion(key);
+        }
+
         private IEnumerable<string> BuildEnumValues(OpenApiSchema value)
         {
             return value.Enum.Select(v => (v as OpenApiString)?.Value);
         }
 
-        private void PopulateNamespaceInfo(string namespaceKey, ApiTypeDefinition typedef)
+        private void PopulateNamespaceInfo(ApiVersion groupVersion, ApiTypeDefinition typedef)
         {
-            var groupVersion = namespaceInfo[namespaceKey];
-
             string group = GetNormalizedGroup(groupVersion);
             string version = GetNormalizedVersion(groupVersion);
 
