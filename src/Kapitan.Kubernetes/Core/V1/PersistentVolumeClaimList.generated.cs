@@ -9,7 +9,7 @@ namespace Kapitan.Kubernetes.Core.V1
     public partial class PersistentVolumeClaimList : IManifestObject
     {
         [JsonProperty("apiVersion")]
-        public string ApiVersion => "/v1";
+        public string ApiVersion => "v1";
         [JsonProperty("kind")]
         public string Kind => "PersistentVolumeClaimList";
 
