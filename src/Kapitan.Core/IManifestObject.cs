@@ -6,5 +6,7 @@ namespace Kapitan.Core
 {
     public interface IManifestObject
     {
+        string ApiVersion { get; }
+        string Kind { get; }
     }
 }

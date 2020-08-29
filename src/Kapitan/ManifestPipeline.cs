@@ -10,11 +10,13 @@ namespace Kapitan
     {
         private readonly ManifestProcessor processor;
         private readonly ManifestLoader loader;
+        private readonly ManifestSerializer serializer;
 
-        public ManifestPipeline(ManifestProcessor processor, ManifestLoader loader)
+        public ManifestPipeline(ManifestProcessor processor, ManifestLoader loader, ManifestSerializer serializer)
         {
             this.processor = processor;
             this.loader = loader;
+            this.serializer = serializer;
         }
 
         public async Task ExecutePipeline(FileInfo file)
@@ -24,7 +26,6 @@ namespace Kapitan
             var config = processor.BuildConfiguration();
             processor.Process(manifest, config);
 
-            var serializer = new ManifestSerializer();
             var output = serializer.ProcessManifest(manifest);
 
             Console.WriteLine(output);

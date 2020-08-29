@@ -1,5 +1,6 @@
 ﻿using k8s;
 using Kapitan.Core;
+using Kapitan.Filters;
 using Kapitan.Yaml;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,16 @@ namespace Kapitan
 {
     public class ManifestSerializer
     {
+        private readonly IManifestFilter filter;
+
+        public ManifestSerializer(IManifestFilter filter)
+        {
+            this.filter = filter;
+        }
+
         public string ProcessManifest(Manifest manifest)
         {
-            var processedObjects = manifest.Select(iko => YamlConverter.SerializeObject(iko));
+            var processedObjects = manifest.Where(manifestObject => filter.Filter(manifestObject)).Select(iko => YamlConverter.SerializeObject(iko));
             return String.Join("\n---\n", processedObjects);
         }
     }

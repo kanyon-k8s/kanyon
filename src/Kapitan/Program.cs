@@ -1,4 +1,5 @@
 ﻿using Kapitan.Configuration;
+using Kapitan.Filters;
 using McMaster.Extensions.CommandLineUtils;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,9 @@ namespace Kapitan
         [Option("-v")]
         public bool Verbose { get; set; }
 
+        [Option("--emit-crds")]
+        public CrdEmitOptions EmitCrds { get; set; }
+
         private async System.Threading.Tasks.Task OnExecuteAsync()
         {
             if (!File.Exists(ManifestSource))
@@ -41,7 +45,9 @@ namespace Kapitan
 
             var processor = new ManifestProcessor(providers);
             var loader = new ManifestLoader() { Verbose = Verbose };
-            var pipeline = new ManifestPipeline(processor, loader) ;
+            var filter = ManifestFilterFactory.BuildManifestFilter(EmitCrds);
+            var serializer = new ManifestSerializer(filter);
+            var pipeline = new ManifestPipeline(processor, loader, serializer);
             await pipeline.ExecutePipeline(new System.IO.FileInfo(ManifestSource));
         }
     }
