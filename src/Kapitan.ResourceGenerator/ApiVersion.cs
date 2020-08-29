@@ -38,7 +38,11 @@ namespace Kapitan.ResourceGenerator
 
         public override string ToString()
         {
-            return $"{Group}/{Version}";
+            if (!string.IsNullOrEmpty(Group))
+            {
+                return $"{Group}/{Version}";
+            }
+            else return Version;
         }
     }
 }
