@@ -1,5 +1,6 @@
 ﻿using Kapitan.Configuration;
 using Kapitan.Filters;
+using Kapitan.Loaders;
 using McMaster.Extensions.CommandLineUtils;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,8 @@ namespace Kapitan
 
         private async System.Threading.Tasks.Task OnExecuteAsync()
         {
-            if (!File.Exists(ManifestSource))
+            var manifestFile = new FileInfo(ManifestSource);
+            if (!manifestFile.Exists)
             {
                 Console.Error.WriteLine($"Could not find manifest {ManifestSource}. Exiting...");
                 return;
@@ -44,11 +46,11 @@ namespace Kapitan
             }
 
             var processor = new ManifestProcessor(providers);
-            var loader = new ManifestLoader() { Verbose = Verbose };
+            var loader = ManifestLoaderFactory.BuildManifestLoader(manifestFile, Verbose);
             var filter = ManifestFilterFactory.BuildManifestFilter(EmitCrds);
             var serializer = new ManifestSerializer(filter);
             var pipeline = new ManifestPipeline(processor, loader, serializer);
-            await pipeline.ExecutePipeline(new System.IO.FileInfo(ManifestSource));
+            await pipeline.ExecutePipeline(manifestFile);
         }
     }
 }

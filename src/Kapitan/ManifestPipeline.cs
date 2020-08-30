@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kapitan.Loaders;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -9,10 +10,10 @@ namespace Kapitan
     public class ManifestPipeline
     {
         private readonly ManifestProcessor processor;
-        private readonly ManifestLoader loader;
+        private readonly IManifestLoader loader;
         private readonly ManifestSerializer serializer;
 
-        public ManifestPipeline(ManifestProcessor processor, ManifestLoader loader, ManifestSerializer serializer)
+        public ManifestPipeline(ManifestProcessor processor, IManifestLoader loader, ManifestSerializer serializer)
         {
             this.processor = processor;
             this.loader = loader;

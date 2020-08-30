@@ -9,9 +9,9 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kapitan
+namespace Kapitan.Loaders
 {
-    public class ManifestLoader
+    public class ScriptManifestLoader : IManifestLoader
     {
         public bool Verbose { get; set; }
         public async Task<Manifest> LoadManifest(FileInfo file)
