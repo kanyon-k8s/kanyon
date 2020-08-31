@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kapitan", "Kapitan\Kapitan.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kapitan.Core", "Kapitan.Core\Kapitan.Core.csproj", "{57897710-2AC6-4D8A-9828-E71B87389FF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kapitan.ResourceGenerator", "Kapitan.ResourceGenerator\Kapitan.ResourceGenerator.csproj", "{F7C1DBFB-A050-47C4-A6F3-B7CC9EA36CE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kapitan.ResourceGenerator", "Kapitan.ResourceGenerator\Kapitan.ResourceGenerator.csproj", "{F7C1DBFB-A050-47C4-A6F3-B7CC9EA36CE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kapitan.Kubernetes", "Kapitan.Kubernetes\Kapitan.Kubernetes.csproj", "{52894D9E-4097-4191-99AE-8BCDA3012A76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kapitan.Kubernetes", "Kapitan.Kubernetes\Kapitan.Kubernetes.csproj", "{52894D9E-4097-4191-99AE-8BCDA3012A76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kapitan.Kubernetes.Fluent", "Kapitan.Kubernetes.Fluent\Kapitan.Kubernetes.Fluent.csproj", "{C239BF8C-4CE8-4071-9111-551147A25E1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{52894D9E-4097-4191-99AE-8BCDA3012A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52894D9E-4097-4191-99AE-8BCDA3012A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52894D9E-4097-4191-99AE-8BCDA3012A76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C239BF8C-4CE8-4071-9111-551147A25E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C239BF8C-4CE8-4071-9111-551147A25E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C239BF8C-4CE8-4071-9111-551147A25E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C239BF8C-4CE8-4071-9111-551147A25E1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
