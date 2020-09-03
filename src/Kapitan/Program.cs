@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Kapitan
 {
-    class Program
+    public class Program
     {
         public static async Task<int> Main(string[] args) => await CommandLineApplication.ExecuteAsync<Program>(args);
 
@@ -37,6 +37,7 @@ namespace Kapitan
 
             var providers = new List<IManifestConfigurationProvider>()
             {
+                new GlobalOptionsManifestConfigurationProvider(this),
                 new EnvironmentManifestConfigurationProvider()
             };
 
