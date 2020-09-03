@@ -21,8 +21,14 @@ namespace Kapitan
 
         public string ProcessManifest(Manifest manifest)
         {
-            var processedObjects = manifest.Where(manifestObject => filter.Filter(manifestObject)).Select(iko => YamlConverter.SerializeObject(iko));
+            var processedObjects = manifest.Where(manifestObject => filter.Filter(manifestObject)).Select(iko => SerializeManifestObject(iko));
             return String.Join("\n---\n", processedObjects);
+        }
+
+        private string SerializeManifestObject(IManifestObject iko)
+        {
+            if (iko is PrecompiledManifestObject precompiledManifestObject) return precompiledManifestObject.ManifestOutput;
+            else return YamlConverter.SerializeObject(iko);
         }
     }
 }
