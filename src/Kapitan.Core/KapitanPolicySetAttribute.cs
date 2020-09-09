@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Kapitan.Core
 {
-    [AttributeUsage(AttributeTargets.Assembly)]
+    [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
     public class KapitanPolicySetAttribute : Attribute
     {
         public KapitanPolicySetAttribute(Type policySetType)
