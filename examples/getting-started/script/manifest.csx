@@ -11,7 +11,7 @@ new Kapitan.Core.Manifest() {
         spec = new DeploymentSpec {
             selector = new LabelSelector {
                 matchLabels = new { app = "helloworld" }
-            }
+            },
             template = new PodTemplateSpec {
                 metadata = new ObjectMeta() {
                     labels = new { app = "helloworld" }
