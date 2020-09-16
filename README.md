@@ -4,7 +4,7 @@
 ![build](https://github.com/kanyon-k8s/kanyon/workflows/.NET%20Core/badge.svg)
 ![license](https://img.shields.io/github/license/kanyon-k8s/kanyon)
 ![issues](https://img.shields.io/github/issues/kanyon-k8s/kanyon)
-![kapitan.kubernetes](https://badgen.net/nuget/v/kapitan.kubernetes/latest)
+![kanyon.kubernetes](https://badgen.net/nuget/v/kanyon.kubernetes/latest)
 
 ### Features
 - Repeatable - A Kanyon Manifest will generate the same manifest given the same input every time
@@ -169,24 +169,24 @@ Full examples can be found in the examples directory.
 ### How to install
 Kanyon is packaged as a .Net Core global tool to make it easy to install. Simply run 
 ```
-dotnet tool install --global kapitan
+dotnet tool install --global kanyon
 ```
 
 This will install the latest version from NuGet and add it into your path.
 
 ### How to generate manifests
-Kapitan writes the YAML directly to stdout to make it easy to pipe the output to file or to kubectl. To generate a manifest, simply run 
+Kanyon writes the YAML directly to stdout to make it easy to pipe the output to file or to kubectl. To generate a manifest, simply run 
 ```
-kapitan -f your-manifest-filename.csx
+kanyon -f your-manifest-filename.csx
 ``` 
 and the manifest will be emitted to the console. To apply this manifest directly, you can run 
 ```
-kapitan -f your-manifest-filename.csx | kubectl apply -f -
+kanyon -f your-manifest-filename.csx | kubectl apply -f -
 ```
 
 Configuration values can also be provided over the command line. Values must be provided using the `key=value` format. To pass a BuildNumber variable into a Kanyon manifest, you can run 
 ```
-kapitan -f your-manifest-filename.csx -c BuildNumber=2.0.0
+kanyon -f your-manifest-filename.csx -c BuildNumber=2.0.0
 ```
 
 ## Background
