@@ -4,7 +4,7 @@
 ![build](https://github.com/kanyon-k8s/kanyon/workflows/.NET%20Core/badge.svg)
 ![license](https://img.shields.io/github/license/kanyon-k8s/kanyon)
 ![issues](https://img.shields.io/github/issues/kanyon-k8s/kanyon)
-![kapitan.kubernetes](https://badgen.net/nuget/v/kapitan.kubernetes/latest)
+![kanyon.kubernetes](https://badgen.net/nuget/v/kanyon.kubernetes/latest)
 
 ### Features
 - Repeatable - A Kanyon Manifest will generate the same manifest given the same input every time
@@ -13,17 +13,17 @@
 - Easy-to-use - Kanyon manifests shouldn't require knowledge of magic strings like Kind names, APIVersion values, or other similar tribal knowledge. Where a value is static for a resource, it should be a readonly property so that the user doesn't need to duplicate knowledge and keystrokes
 
 ## Usage
-Kanyon uses Manifest objects to define what Kubernetes API resources should be emitted. Manifest objects are simply collections of IManifestObject, and can be inherited from and composed with to build the final manifest that Kapitan will serialize. The least-abstracted manifests resemble their YAML counterparts, making translation from YAML simple and frictionless. All of the Kubernetes core resources are implemented in the Kapitan.Kubernetes library.
+Kanyon uses Manifest objects to define what Kubernetes API resources should be emitted. Manifest objects are simply collections of IManifestObject, and can be inherited from and composed with to build the final manifest that Kanyon will serialize. The least-abstracted manifests resemble their YAML counterparts, making translation from YAML simple and frictionless. All of the Kubernetes core resources are implemented in the Kanyon.Kubernetes library.
 
 Kanyon manifests can be defined in either a C# Script (.csx) file that returns a Manifest object or a compiled DLL with a type that inherits from Manifest. Here is an example of a simple manifest written in a C# Script
 
 ```csharp
-#r "nuget: Kapitan.Kubernetes, 2.0.0"
+#r "nuget: Kanyon.Kubernetes, 2.0.0"
 
-using Kapitan.Kubernetes.Core.V1;
-using Kapitan.Kubernetes.Apps.V1;
+using Kanyon.Kubernetes.Core.V1;
+using Kanyon.Kubernetes.Apps.V1;
 
-new Kapitan.Core.Manifest() {
+new Kanyon.Core.Manifest() {
     new Deployment() {
         metadata = new ObjectMeta {
             name = "helloworld"
@@ -133,7 +133,7 @@ public class HttpServiceManifest : Manifest
 }
 ```
 
-The Manifest object also exposes APIs to receive configuration values and expose them in the manifest. Each Manifest object will have the ConfigureItems method invoked before it is serialized. This method accepts a `Dictionary<string, string>` as a parameter. This dictionary is populated with the environment variables available to the Kapitan process, as well as any arguments provided on the command line.
+The Manifest object also exposes APIs to receive configuration values and expose them in the manifest. Each Manifest object will have the ConfigureItems method invoked before it is serialized. This method accepts a `Dictionary<string, string>` as a parameter. This dictionary is populated with the environment variables available to the Kanyon process, as well as any arguments provided on the command line.
 
 ```csharp
 class CDManifest : Manifest {
@@ -167,26 +167,26 @@ new CDManifest()
 Full examples can be found in the examples directory.
 
 ### How to install
-Kapitan is packaged as a .Net Core global tool to make it easy to install. Simply run 
+Kanyon is packaged as a .Net Core global tool to make it easy to install. Simply run 
 ```
-dotnet tool install --global kapitan
+dotnet tool install --global kanyon
 ```
 
 This will install the latest version from NuGet and add it into your path.
 
 ### How to generate manifests
-Kapitan writes the YAML directly to stdout to make it easy to pipe the output to file or to kubectl. To generate a manifest, simply run 
+Kanyon writes the YAML directly to stdout to make it easy to pipe the output to file or to kubectl. To generate a manifest, simply run 
 ```
-kapitan -f your-manifest-filename.csx
+kanyon -f your-manifest-filename.csx
 ``` 
 and the manifest will be emitted to the console. To apply this manifest directly, you can run 
 ```
-kapitan -f your-manifest-filename.csx | kubectl apply -f -
+kanyon -f your-manifest-filename.csx | kubectl apply -f -
 ```
 
 Configuration values can also be provided over the command line. Values must be provided using the `key=value` format. To pass a BuildNumber variable into a Kanyon manifest, you can run 
 ```
-kapitan -f your-manifest-filename.csx -c BuildNumber=2.0.0
+kanyon -f your-manifest-filename.csx -c BuildNumber=2.0.0
 ```
 
 ## Background

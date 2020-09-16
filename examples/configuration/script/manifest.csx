@@ -1,7 +1,7 @@
-#r "nuget: Kapitan.Kubernetes, 2.0.0"
-using Kapitan.Core;
-using Kapitan.Kubernetes.Apps.V1;
-using Kapitan.Kubernetes.Core.V1;
+#r "nuget: Kanyon.Kubernetes, 2.0.0"
+using Kanyon.Core;
+using Kanyon.Kubernetes.Apps.V1;
+using Kanyon.Kubernetes.Core.V1;
 
 class CDManifest : Manifest {
     public override void ConfigureItems(Dictionary<string, string> configuration) {

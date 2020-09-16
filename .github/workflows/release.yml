@@ -16,10 +16,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
-    - name: Build Kapitan with dotnet
-      run: dotnet build --configuration Release src/Kapitan.sln
-    - name: Package Kapitan
-      run: dotnet pack --configuration Release src/Kapitan.sln -o ../artifacts/
+    - name: Build Kanyon with dotnet
+      run: dotnet build --configuration Release src/Kanyon.sln
+    - name: Package Kanyon
+      run: dotnet pack --configuration Release src/Kanyon.sln -o ../artifacts/
     - name: Publish All
       run: |
            for f in ../artifacts/*.nupkg

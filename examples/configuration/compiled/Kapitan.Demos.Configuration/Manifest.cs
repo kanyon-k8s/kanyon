@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Kapitan.Demos.Configuration
+namespace Kanyon.Demos.Configuration
 {
-    public class Manifest : Kapitan.Core.Manifest
+    public class Manifest : Kanyon.Core.Manifest
     {
         public override void ConfigureItems(Dictionary<string, string> configuration)
         {

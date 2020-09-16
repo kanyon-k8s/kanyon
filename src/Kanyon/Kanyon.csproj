@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>kanyon</ToolCommandName>
+
+    <Authors>Eric Montgomery</Authors>
+    <RepositoryUrl>https://github.com/kanyon-k8s/kanyon</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <Description>Kanyon provides a type-safe, intelli-sense capable, parameterizable definition language for defining Kubernetes objects. Kanyon renders these manifests into a YAML file to be leveraged by kubectl or any other client that consumes YAML</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/kanyon-k8s/kanyon</PackageProjectUrl>
+    <PackageTags>Kubernetes</PackageTags>
+    <VersionPrefix>2.1.0</VersionPrefix>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dotnet.Script" Version="0.53.0" />
+    <PackageReference Include="KubernetesClient" Version="2.0.29" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20371.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kanyon.Core\Kanyon.Core.csproj" />
+    <ProjectReference Include="..\Kanyon.Kubernetes\Kanyon.Kubernetes.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,9 +1,9 @@
-#r "nuget: Kapitan.Kubernetes, 2.0.0"
+#r "nuget: Kanyon.Kubernetes, 2.0.0"
 
-using Kapitan.Kubernetes.Core.V1;
-using Kapitan.Kubernetes.Apps.V1;
+using Kanyon.Kubernetes.Core.V1;
+using Kanyon.Kubernetes.Apps.V1;
 
-new Kapitan.Core.Manifest() {
+new Kanyon.Core.Manifest() {
     new Deployment() {
         metadata = new ObjectMeta {
             name = "helloworld"

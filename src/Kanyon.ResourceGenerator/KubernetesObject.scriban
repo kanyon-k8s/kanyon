@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using Kanyon.Core;
+using Kanyon.Kubernetes;
+
+namespace Kanyon.Kubernetes{{Namespace}}
+{
+    public partial class {{TypeName}} : IManifestObject
+    {
+        [JsonProperty("apiVersion")]
+        public string ApiVersion => "{{ApiVersion}}";
+        [JsonProperty("kind")]
+        public string Kind => "{{TypeName}}";
+
+{{~ for $property in PropertyDefinitions ~}}
+        /** <summary>{{$property.Description}}</summary> */
+        public {{$property.Type}} {{$property.Name}} { get; set; }
+{{~ end ~}}
+    }
+}

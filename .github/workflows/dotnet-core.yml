@@ -16,10 +16,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
-    - name: Build Kapitan with dotnet
-      run: dotnet build --configuration Release src/Kapitan.sln --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
-    - name: Package Kapitan
-      run: dotnet pack --configuration Release src/Kapitan.sln --version-suffix prerelease-$(date +%Y%m%d%H%M%S) -o ../artifacts/
+    - name: Build Kanyon with dotnet
+      run: dotnet build --configuration Release src/Kanyon.sln --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
+    - name: Package Kanyon
+      run: dotnet pack --configuration Release src/Kanyon.sln --version-suffix prerelease-$(date +%Y%m%d%H%M%S) -o ../artifacts/
     - name: Publish All
       run: |
            for f in ../artifacts/*.nupkg

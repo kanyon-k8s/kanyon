@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using Kanyon.Kubernetes;
+using Kanyon.Core;
+
+namespace Kanyon.Kubernetes{{Namespace}}
+{
+    public partial class {{TypeName}} : WrappedString
+    {
+        public {{TypeName}}(string value = default) : base(value) { }
+
+        public static implicit operator string({{TypeName}} v)
+        {
+            return v.Value;
+        }
+
+        public static implicit operator {{TypeName}}(string v)
+        {
+            if (string.IsNullOrEmpty(v)) return null;
+
+            return new {{TypeName}}(v);
+        }
+
+{{~ for $value in EnumValues ~}}
+        public static readonly {{TypeName}} {{$value}} = "{{$value}}";
+{{~ end ~}}
+    }
+}

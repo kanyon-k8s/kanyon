@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+
+    <Authors>Eric Montgomery</Authors>
+    <RepositoryUrl>https://github.com/kanyon-k8s/kanyon</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <Description>Kanyon.Core provides the base objects to build Kanyon manifests on top of</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/kanyon-k8s/kanyon</PackageProjectUrl>
+    <PackageTags>Kubernetes</PackageTags>
+    <VersionPrefix>2.1.0</VersionPrefix>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
