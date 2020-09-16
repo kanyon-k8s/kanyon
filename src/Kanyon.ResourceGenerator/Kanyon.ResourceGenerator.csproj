@@ -5,20 +5,19 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <PackAsTool>true</PackAsTool>
-    <ToolCommandName>kapitan</ToolCommandName>
 
     <Authors>Eric Montgomery</Authors>
-    <RepositoryUrl>https://github.com/ermontgo/Kapitan</RepositoryUrl>
+    <RepositoryUrl>https://github.com/kanyon-k8s/kanyon</RepositoryUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <Description>Kapitan.ResourceGenerator generates Kapitan Manifest objects out of an OpenAPI (Swagger) description of an API Version</Description>
+    <Description>Kanyon.ResourceGenerator generates Kanyon Manifest objects out of an OpenAPI (Swagger) description of an API Version</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/ermontgo/Kapitan</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/kanyon-k8s/kanyon</PackageProjectUrl>
     <PackageTags>Kubernetes</PackageTags>
     <VersionPrefix>2.1.0</VersionPrefix>
-    <AssemblyName>kapitan-resgen</AssemblyName>
-    <ToolCommandName>kapitan-resgen</ToolCommandName>
-    <PackageId>Kapitan.ResourceGenerator</PackageId>
+    <AssemblyName>kanyon-resgen</AssemblyName>
+    <ToolCommandName>kanyon-resgen</ToolCommandName>
+    <PackageId>Kanyon.ResourceGenerator</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

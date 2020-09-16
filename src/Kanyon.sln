@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kapitan", "Kapitan\Kapitan.csproj", "{B6198D8A-8D33-41A2-B6AC-0A58AFFCB83B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kanyon", "Kanyon\Kanyon.csproj", "{B6198D8A-8D33-41A2-B6AC-0A58AFFCB83B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kapitan.Core", "Kapitan.Core\Kapitan.Core.csproj", "{57897710-2AC6-4D8A-9828-E71B87389FF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kanyon.Core", "Kanyon.Core\Kanyon.Core.csproj", "{57897710-2AC6-4D8A-9828-E71B87389FF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kapitan.ResourceGenerator", "Kapitan.ResourceGenerator\Kapitan.ResourceGenerator.csproj", "{F7C1DBFB-A050-47C4-A6F3-B7CC9EA36CE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanyon.ResourceGenerator", "Kanyon.ResourceGenerator\Kanyon.ResourceGenerator.csproj", "{F7C1DBFB-A050-47C4-A6F3-B7CC9EA36CE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kapitan.Kubernetes", "Kapitan.Kubernetes\Kapitan.Kubernetes.csproj", "{52894D9E-4097-4191-99AE-8BCDA3012A76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanyon.Kubernetes", "Kanyon.Kubernetes\Kanyon.Kubernetes.csproj", "{52894D9E-4097-4191-99AE-8BCDA3012A76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

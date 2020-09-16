@@ -4,12 +4,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
 
     <Authors>Eric Montgomery</Authors>
-    <RepositoryUrl>https://github.com/ermontgo/Kapitan</RepositoryUrl>
+    <RepositoryUrl>https://github.com/kanyon-k8s/kanyon</RepositoryUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <Description>Kapitan.Kubernetes provides all of the objects exposed by the standard Kubernetes API as Manifest objects that can be included in a Kapitan manifest. </Description>
+    <Description>Kanyon.Kubernetes provides all of the objects exposed by the standard Kubernetes API as Manifest objects that can be included in a Kanyon manifest. </Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/ermontgo/Kapitan</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/kanyon-k8s/kanyon</PackageProjectUrl>
     <PackageTags>Kubernetes</PackageTags>
     <VersionPrefix>2.1.0</VersionPrefix>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Kapitan.Core\Kapitan.Core.csproj" />
+    <ProjectReference Include="..\Kanyon.Core\Kanyon.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

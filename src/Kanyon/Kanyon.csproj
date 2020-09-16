@@ -5,15 +5,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <PackAsTool>true</PackAsTool>
-    <ToolCommandName>kapitan</ToolCommandName>
+    <ToolCommandName>kanyon</ToolCommandName>
 
     <Authors>Eric Montgomery</Authors>
-    <RepositoryUrl>https://github.com/ermontgo/Kapitan</RepositoryUrl>
+    <RepositoryUrl>https://github.com/kanyon-k8s/kanyon</RepositoryUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <Description>Kapitan provides a type-safe, intelli-sense capable, parameterizable definition language for defining Kubernetes objects. Kapitan renders these manifests into a YAML file to be leveraged by kubectl or any other client that consumes YAML</Description>
+    <Description>Kanyon provides a type-safe, intelli-sense capable, parameterizable definition language for defining Kubernetes objects. Kanyon renders these manifests into a YAML file to be leveraged by kubectl or any other client that consumes YAML</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/ermontgo/Kapitan</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/kanyon-k8s/kanyon</PackageProjectUrl>
     <PackageTags>Kubernetes</PackageTags>
     <VersionPrefix>2.1.0</VersionPrefix>
   </PropertyGroup>
@@ -25,8 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Kapitan.Core\Kapitan.Core.csproj" />
-    <ProjectReference Include="..\Kapitan.Kubernetes\Kapitan.Kubernetes.csproj" />
+    <ProjectReference Include="..\Kanyon.Core\Kanyon.Core.csproj" />
+    <ProjectReference Include="..\Kanyon.Kubernetes\Kanyon.Kubernetes.csproj" />
   </ItemGroup>
 
   <ItemGroup>
