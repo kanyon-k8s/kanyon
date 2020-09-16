@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Kapitan.Core;
-using Kapitan.Kubernetes;
+using Kanyon.Core;
+using Kanyon.Kubernetes;
 
-namespace Kapitan.Kubernetes.Admissionregistration.V1beta1
+namespace Kanyon.Kubernetes.Admissionregistration.V1beta1
 {
     public partial class MutatingWebhookConfigurationList : IManifestObject
     {

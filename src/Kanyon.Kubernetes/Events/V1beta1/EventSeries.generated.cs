@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Kapitan.Kubernetes;
+using Kanyon.Kubernetes;
 
-namespace Kapitan.Kubernetes.Events.V1beta1
+namespace Kanyon.Kubernetes.Events.V1beta1
 {
     public partial class EventSeries
     {

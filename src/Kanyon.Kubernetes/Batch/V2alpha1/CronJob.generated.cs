@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Kapitan.Core;
-using Kapitan.Kubernetes;
+using Kanyon.Core;
+using Kanyon.Kubernetes;
 
-namespace Kapitan.Kubernetes.Batch.V2alpha1
+namespace Kanyon.Kubernetes.Batch.V2alpha1
 {
     public partial class CronJob : IManifestObject
     {

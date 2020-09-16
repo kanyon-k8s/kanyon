@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Kapitan.Kubernetes;
+using Kanyon.Kubernetes;
 
-namespace Kapitan.Kubernetes.Autoscaling.V2beta2
+namespace Kanyon.Kubernetes.Autoscaling.V2beta2
 {
     public partial class MetricSpec
     {

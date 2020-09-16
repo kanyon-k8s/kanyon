@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Kapitan.Kubernetes;
+using Kanyon.Kubernetes;
 
-namespace Kapitan.Kubernetes.Networking.V1
+namespace Kanyon.Kubernetes.Networking.V1
 {
     public partial class IngressServiceBackend
     {

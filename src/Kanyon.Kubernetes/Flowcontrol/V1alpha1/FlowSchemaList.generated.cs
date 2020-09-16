@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Kapitan.Core;
-using Kapitan.Kubernetes;
+using Kanyon.Core;
+using Kanyon.Kubernetes;
 
-namespace Kapitan.Kubernetes.Flowcontrol.V1alpha1
+namespace Kanyon.Kubernetes.Flowcontrol.V1alpha1
 {
     public partial class FlowSchemaList : IManifestObject
     {

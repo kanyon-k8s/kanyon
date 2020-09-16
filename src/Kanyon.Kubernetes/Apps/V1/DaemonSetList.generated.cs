@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Kapitan.Core;
-using Kapitan.Kubernetes;
+using Kanyon.Core;
+using Kanyon.Kubernetes;
 
-namespace Kapitan.Kubernetes.Apps.V1
+namespace Kanyon.Kubernetes.Apps.V1
 {
     public partial class DaemonSetList : IManifestObject
     {

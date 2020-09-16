@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Kapitan.Kubernetes;
+using Kanyon.Kubernetes;
 
-namespace Kapitan.Kubernetes
+namespace Kanyon.Kubernetes
 {
     public partial class RawExtension
     {
