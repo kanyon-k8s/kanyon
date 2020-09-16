@@ -1,21 +1,21 @@
-# Kapitan
+# Kanyon
 > Write Kubernetes manifests faster and with less frustration
 
-![build](https://github.com/ermontgo/Kapitan/workflows/.NET%20Core/badge.svg)
-![license](https://img.shields.io/github/license/ermontgo/kapitan)
-![issues](https://img.shields.io/github/issues/ermontgo/kapitan)
+![build](https://github.com/kanyon-k8s/kanyon/workflows/.NET%20Core/badge.svg)
+![license](https://img.shields.io/github/license/kanyon-k8s/kanyon)
+![issues](https://img.shields.io/github/issues/kanyon-k8s/kanyon)
 ![kapitan.kubernetes](https://badgen.net/nuget/v/kapitan.kubernetes/latest)
 
 ### Features
-- Repeatable - A Kapitan Manifest will generate the same manifest given the same input every time
-- Parameterized - Kapitan manifests allow the writer to inject values from the configuration directly into the manifest, removing the need for a find-and-replace step to inject parameters
-- Stateless - Kapitan manifests simply render to a YAML file, which allows the user to use kubectl to apply the manifest and leverage the same patching and validation rules
-- Easy-to-use - Kapitan manifests shouldn't require knowledge of magic strings like Kind names, APIVersion values, or other similar tribal knowledge. Where a value is static for a resource, it should be a readonly property so that the user doesn't need to duplicate knowledge and keystrokes
+- Repeatable - A Kanyon Manifest will generate the same manifest given the same input every time
+- Parameterized - Kanyon manifests allow the writer to inject values from the configuration directly into the manifest, removing the need for a find-and-replace step to inject parameters
+- Stateless - Kanyon manifests simply render to a YAML file, which allows the user to use kubectl to apply the manifest and leverage the same patching and validation rules
+- Easy-to-use - Kanyon manifests shouldn't require knowledge of magic strings like Kind names, APIVersion values, or other similar tribal knowledge. Where a value is static for a resource, it should be a readonly property so that the user doesn't need to duplicate knowledge and keystrokes
 
 ## Usage
-Kapitan uses Manifest objects to define what Kubernetes API resources should be emitted. Manifest objects are simply collections of IManifestObject, and can be inherited from and composed with to build the final manifest that Kapitan will serialize. The least-abstracted manifests resemble their YAML counterparts, making translation from YAML simple and frictionless. All of the Kubernetes core resources are implemented in the Kapitan.Kubernetes library.
+Kanyon uses Manifest objects to define what Kubernetes API resources should be emitted. Manifest objects are simply collections of IManifestObject, and can be inherited from and composed with to build the final manifest that Kapitan will serialize. The least-abstracted manifests resemble their YAML counterparts, making translation from YAML simple and frictionless. All of the Kubernetes core resources are implemented in the Kapitan.Kubernetes library.
 
-Kapitan manifests can be defined in either a C# Script (.csx) file that returns a Manifest object or a compiled DLL with a type that inherits from Manifest. Here is an example of a simple manifest written in a C# Script
+Kanyon manifests can be defined in either a C# Script (.csx) file that returns a Manifest object or a compiled DLL with a type that inherits from Manifest. Here is an example of a simple manifest written in a C# Script
 
 ```csharp
 #r "nuget: Kapitan.Kubernetes, 2.0.0"
@@ -184,7 +184,7 @@ and the manifest will be emitted to the console. To apply this manifest directly
 kapitan -f your-manifest-filename.csx | kubectl apply -f -
 ```
 
-Configuration values can also be provided over the command line. Values must be provided using the `key=value` format. To pass a BuildNumber variable into a Kapitan manifest, you can run 
+Configuration values can also be provided over the command line. Values must be provided using the `key=value` format. To pass a BuildNumber variable into a Kanyon manifest, you can run 
 ```
 kapitan -f your-manifest-filename.csx -c BuildNumber=2.0.0
 ```
