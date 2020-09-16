@@ -26,6 +26,12 @@ namespace Kapitan
         [Option("--emit-crds")]
         public CrdEmitOptions EmitCrds { get; set; }
 
+        [Option("-p")]
+        public string PolicySetSource { get; set; }
+
+        [Option("--policy-set")]
+        public string PolicySetName { get; set; }
+
         private async System.Threading.Tasks.Task OnExecuteAsync()
         {
             var manifestFile = new FileInfo(ManifestSource);
@@ -46,11 +52,16 @@ namespace Kapitan
                 providers.Add(new ArgumentManifestConfigurationProvider(Configuration));
             }
 
+            PolicySetEvaluator policyEvaluator = null;
+            IPolicySetLoader policyLoader = null;
+            if (!string.IsNullOrEmpty(PolicySetSource)) policyLoader = PolicySetLoaderFactory.BuildPolicySetLoader(new FileInfo(PolicySetSource), Verbose, PolicySetName);
+            policyEvaluator = new PolicySetEvaluator(policyLoader);
+
             var processor = new ManifestProcessor(providers);
             var loader = ManifestLoaderFactory.BuildManifestLoader(manifestFile, Verbose);
             var filter = ManifestFilterFactory.BuildManifestFilter(EmitCrds);
             var serializer = new ManifestSerializer(filter);
-            var pipeline = new ManifestPipeline(processor, loader, serializer);
+            var pipeline = new ManifestPipeline(processor, loader, serializer, policyEvaluator);
             await pipeline.ExecutePipeline(manifestFile);
         }
     }

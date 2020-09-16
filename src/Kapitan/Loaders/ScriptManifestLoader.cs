@@ -11,22 +11,11 @@ using System.Threading.Tasks;
 
 namespace Kapitan.Loaders
 {
-    public class ScriptManifestLoader : IManifestLoader
+    public class ScriptManifestLoader : ScriptLoader<Manifest>, IManifestLoader
     {
-        public bool Verbose { get; set; }
         public async Task<Manifest> LoadManifest(FileInfo file)
         {
-            var console = new ScriptConsole(Console.Error, Console.In, Console.Error);
-            var logger = LogHelper.CreateLogFactory(Verbose ? "debug" : "info");
-
-            var manifestSource = File.ReadAllText(file.FullName);
-
-            var command = new ExecuteCodeCommand(console, logger);
-            var options = new ExecuteCodeCommandOptions(manifestSource, file.DirectoryName, new string[] { }, Microsoft.CodeAnalysis.OptimizationLevel.Debug, true, null);
-
-            var manifest = await command.Execute<Manifest>(options);
-
-            return manifest;
+            return await Load(file);
         }
     }
 }

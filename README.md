@@ -161,7 +161,7 @@ class CDManifest : Manifest {
     }
 }
 
-new CDManifest();
+new CDManifest()
 ```
 
 Full examples can be found in the examples directory.
@@ -197,4 +197,7 @@ kapitan -f your-manifest-filename.csx -c BuildNumber=2.0.0
 - Pulumi makes the editing experience much more friendly, but requires you to set well-known things that can be included in the abstraction (like API versions, etc). It's also unclear that we could 
 - CDK8S handles the editing experience well, but it relies on a scope that cross-cuts through the entire stack, and also seems to have the same leaky abstractions as Pulumi. Parameterization is also unclear.
 
+## FAQ
+### Why do my script manifests fail to export a manifest?
+The script manifests must return a Manifest object as the last instruction. If a semicolon is placed at the end of the line, it is treated as a full statement and nothing is returned.
  

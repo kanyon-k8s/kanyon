@@ -1,26 +1,22 @@
-#r "nuget: Kapitan.Kubernetes, 2.0.0"
+#r "nuget: Kapitan.Kubernetes, 2.1.0"
 
-using Kapitan.Kubernetes.Core.V1;
 using Kapitan.Kubernetes.Apps.V1;
+using Kapitan.Kubernetes.Core.V1;
 
 new Kapitan.Core.Manifest() {
     new Deployment() {
         metadata = new ObjectMeta {
-            name = "helloworld"
+            name = "helloworld",
+            @namespace = "default"
         },
         spec = new DeploymentSpec {
-            selector = new LabelSelector {
-                matchLabels = new { app = "helloworld" }
-            },
             template = new PodTemplateSpec {
-                metadata = new ObjectMeta() {
-                    labels = new { app = "helloworld" }
-                },
                 spec = new PodSpec {
                     containers = new List<Container> {
                         new Container {
-                            image = "nginx",
+                            image = "busybox",
                             name = "hello",
+                            command = new List<string> { "sh", "-c" },
                             ports = new List<ContainerPort> {
                                 new ContainerPort { containerPort = 80 }
                             }
@@ -34,6 +30,7 @@ new Kapitan.Core.Manifest() {
     new Service {
         metadata = new ObjectMeta {
             name = "helloworld",
+            @namespace = "default"
         },
         spec = new ServiceSpec {
             type = "ClusterIP",

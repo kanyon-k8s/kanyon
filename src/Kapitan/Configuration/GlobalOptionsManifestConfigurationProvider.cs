@@ -17,6 +17,7 @@ namespace Kapitan.Configuration
         {
             values.Add("Invocation.EmitCrds", program.EmitCrds.ToString());
             values.Add("Invocation.Verbose", program.Verbose.ToString());
+            values.Add("Invocation.ManifestSource", program.ManifestSource);
 
             return values;
         }
