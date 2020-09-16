@@ -1,8 +1,8 @@
-﻿using Kapitan.Core;
+﻿using Kanyon.Core;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Kapitan.Loaders
+namespace Kanyon.Loaders
 {
     public interface IManifestLoader
     {

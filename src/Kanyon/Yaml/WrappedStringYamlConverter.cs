@@ -1,4 +1,4 @@
-﻿using Kapitan.Core;
+﻿using Kanyon.Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +6,7 @@ using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 
-namespace Kapitan.Yaml
+namespace Kanyon.Yaml
 {
     public class WrappedStringYamlConverter : IYamlTypeConverter
     {

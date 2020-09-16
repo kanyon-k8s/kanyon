@@ -1,10 +1,10 @@
-﻿using Kapitan.Configuration;
-using Kapitan.Core;
+﻿using Kanyon.Configuration;
+using Kanyon.Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kapitan
+namespace Kanyon
 {
     public class ManifestProcessor
     {

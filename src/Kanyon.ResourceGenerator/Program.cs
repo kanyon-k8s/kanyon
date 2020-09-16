@@ -1,4 +1,4 @@
-﻿using Kapitan.ResourceGenerator.Heuristics;
+﻿using Kanyon.ResourceGenerator.Heuristics;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.OpenApi.Readers;
 using System;
@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Kapitan.ResourceGenerator
+namespace Kanyon.ResourceGenerator
 {
     class Program
     {

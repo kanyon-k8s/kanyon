@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kapitan.Core
+namespace Kanyon.Core
 {
     public class PrecompiledManifestObject : IManifestObject
     {

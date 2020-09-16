@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 
-namespace Kapitan.Loaders
+namespace Kanyon.Loaders
 {
     public static class ManifestLoaderFactory
     {

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Kapitan.Core;
-using Kapitan.Kubernetes;
+using Kanyon.Core;
+using Kanyon.Kubernetes;
 
-namespace Kapitan.Kubernetes{{Namespace}}
+namespace Kanyon.Kubernetes{{Namespace}}
 {
     public partial class {{TypeName}} : IManifestObject
     {

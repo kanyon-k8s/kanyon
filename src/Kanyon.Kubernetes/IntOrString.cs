@@ -1,9 +1,9 @@
-﻿using Kapitan.Core;
+﻿using Kanyon.Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kapitan.Kubernetes
+namespace Kanyon.Kubernetes
 {
     public partial class IntOrString : WrappedString
     {

@@ -1,4 +1,4 @@
-﻿using Kapitan.Core;
+﻿using Kanyon.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kapitan.Loaders
+namespace Kanyon.Loaders
 {
     public class CompiledPolicySetLoader : IPolicySetLoader
     {
@@ -18,7 +18,7 @@ namespace Kapitan.Loaders
         {
             var assembly = Assembly.LoadFrom(Source.FullName);
             Type policySetType = null;
-            var attributes = assembly.GetCustomAttributes<KapitanPolicySetAttribute>();
+            var attributes = assembly.GetCustomAttributes<KanyonPolicySetAttribute>();
             if (!string.IsNullOrEmpty(PolicySetName)) attributes = attributes.Where(attr => attr.Name == PolicySetName);
 
             if (attributes.Skip(1).Any()) throw new InvalidOperationException("Multiple policy sets were found. Please specify the policy set name using the --policy-set attribute");
@@ -32,7 +32,7 @@ namespace Kapitan.Loaders
                 }
                 catch (InvalidOperationException iopEx)
                 {
-                    throw new MissingManifestException("No policy set could be loaded from the provided assembly. Please make sure that either there is a single class inheriting from PolicySet publically available, or that the assembly is decorated with the KapitanPolicySetAttribute");
+                    throw new MissingManifestException("No policy set could be loaded from the provided assembly. Please make sure that either there is a single class inheriting from PolicySet publically available, or that the assembly is decorated with the KanyonPolicySetAttribute");
                 }
             }
             else
@@ -42,7 +42,7 @@ namespace Kapitan.Loaders
 
             if (!typeof(PolicySet).IsAssignableFrom(policySetType))
             {
-                throw new MissingManifestException("The type specified by the KapitanPolicySetAttribute is not a descendant of the PolicySet type");
+                throw new MissingManifestException("The type specified by the KanyonPolicySetAttribute is not a descendant of the PolicySet type");
             }
             else if (policySetType.GetConstructors().SingleOrDefault(ci => ci.GetParameters().Length == 0) == null)
             {

@@ -1,6 +1,6 @@
-﻿using Kapitan.Core;
+﻿using Kanyon.Core;
 
-namespace Kapitan.Filters
+namespace Kanyon.Filters
 {
     public interface IManifestFilter
     {

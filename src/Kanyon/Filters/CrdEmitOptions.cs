@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kapitan.Filters
+namespace Kanyon.Filters
 {
     public enum CrdEmitOptions
     {

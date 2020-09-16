@@ -1,5 +1,5 @@
 ﻿using Humanizer;
-using Kapitan.ResourceGenerator.Heuristics;
+using Kanyon.ResourceGenerator.Heuristics;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace Kapitan.ResourceGenerator
+namespace Kanyon.ResourceGenerator
 {
     public class TypeDefinitionManager
     {

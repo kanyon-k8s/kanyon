@@ -6,7 +6,7 @@ using System.Text;
 using YamlDotNet.Core;
 using YamlDotNet.Serialization;
 
-namespace Kapitan.Yaml
+namespace Kanyon.Yaml
 {
     class AutoRestTypeInspector : ITypeInspector
     {

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kapitan.Core
+namespace Kanyon.Core
 {
     [AttributeUsage(AttributeTargets.Assembly)]
-    public class KapitanManifestAttribute : Attribute
+    public class KanyonManifestAttribute : Attribute
     {
         public Type ManifestType { get; set; }
 
-        public KapitanManifestAttribute(Type manifestType)
+        public KanyonManifestAttribute(Type manifestType)
         {
             ManifestType = manifestType;
         }

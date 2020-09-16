@@ -1,4 +1,4 @@
-﻿using Kapitan.Core;
+﻿using Kanyon.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,14 +7,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kapitan.Loaders
+namespace Kanyon.Loaders
 {
     public class CompiledManifestLoader : IManifestLoader
     {
         public async Task<Manifest> LoadManifest(FileInfo file)
         {
             var assembly = Assembly.LoadFrom(file.FullName);
-            var manifestType = assembly.GetCustomAttribute<KapitanManifestAttribute>()?.ManifestType;
+            var manifestType = assembly.GetCustomAttribute<KanyonManifestAttribute>()?.ManifestType;
 
             if (manifestType == null)
             {
@@ -26,12 +26,12 @@ namespace Kapitan.Loaders
                 }
                 catch (InvalidOperationException iopEx)
                 {
-                    throw new MissingManifestException("No manifest could be loaded from the provided assembly. Please make sure that either there is a single class inheriting from Manifest publically available, or that the assembly is decorated with the KapitanManifestAttribute");
+                    throw new MissingManifestException("No manifest could be loaded from the provided assembly. Please make sure that either there is a single class inheriting from Manifest publically available, or that the assembly is decorated with the KanyonManifestAttribute");
                 }
             }
             else if (!typeof(Manifest).IsAssignableFrom(manifestType))
             {
-                throw new MissingManifestException("The type specified by the KapitanManifestAttribute is not a descendant of the Manifest type");
+                throw new MissingManifestException("The type specified by the KanyonManifestAttribute is not a descendant of the Manifest type");
             }
             else if (manifestType.GetConstructors().SingleOrDefault(ci => ci.GetParameters().Length == 0) == null)
             {

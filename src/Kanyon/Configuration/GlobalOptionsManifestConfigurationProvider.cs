@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kapitan.Configuration
+namespace Kanyon.Configuration
 {
     public class GlobalOptionsManifestConfigurationProvider : IManifestConfigurationProvider
     {

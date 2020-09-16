@@ -1,7 +1,7 @@
-﻿using Kapitan.Core;
-using Kapitan.Kubernetes.Core.V1;
+﻿using Kanyon.Core;
+using Kanyon.Kubernetes.Core.V1;
 
-namespace Kapitan.Kubernetes
+namespace Kanyon.Kubernetes
 {
     public class ThirdPartyResource : IManifestObject
     {

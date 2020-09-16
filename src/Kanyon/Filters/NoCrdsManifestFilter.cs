@@ -1,9 +1,9 @@
-﻿using Kapitan.Core;
+﻿using Kanyon.Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kapitan.Filters
+namespace Kanyon.Filters
 {
     public class NoCrdsManifestFilter : IManifestFilter
     {

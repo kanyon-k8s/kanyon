@@ -1,9 +1,9 @@
-#r "nuget: Kapitan.Core, 2.1.0"
-#r "nuget: Kapitan.Kubernetes, 2.1.0"
+#r "nuget: Kanyon.Core, 2.1.0"
+#r "nuget: Kanyon.Kubernetes, 2.1.0"
 
 using System.Collections.Generic;
-using Kapitan.Core;
-using Kapitan.Kubernetes.Apps.V1;
+using Kanyon.Core;
+using Kanyon.Kubernetes.Apps.V1;
 
 class AnnotateObjectsPolicy : IPolicy
 {
@@ -13,7 +13,7 @@ class AnnotateObjectsPolicy : IPolicy
 
         try {
             if (resource.metadata.annotations == null) resource.metadata.annotations = new Dictionary<string, string>();
-                resource.metadata.annotations.Add("kapitan.dev/manifest", configuration["Invocation.ManifestSource"]);
+                resource.metadata.annotations.Add("Kanyon.dev/manifest", configuration["Invocation.ManifestSource"]);
         }
         catch (Exception ex) { Console.Error.WriteLine(ex.Message); }
     }

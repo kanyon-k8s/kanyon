@@ -1,7 +1,7 @@
 ﻿using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
 
-namespace Kapitan.ResourceGenerator
+namespace Kanyon.ResourceGenerator
 {
     public class ApiTypeDefinition
     {

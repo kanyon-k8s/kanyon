@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Kapitan.Core" Version="2.0.0" />
-    <PackageReference Include="Kapitan.Kubernetes" Version="2.0.0" />
+    <PackageReference Include="Kanyon.Core" Version="2.0.0" />
+    <PackageReference Include="Kanyon.Kubernetes" Version="2.0.0" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Kapitan.Configuration
+namespace Kanyon.Configuration
 {
     public interface IManifestConfigurationProvider
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kapitan.ResourceGenerator
+namespace Kanyon.ResourceGenerator
 {
     public class PropertyDefinition
     {

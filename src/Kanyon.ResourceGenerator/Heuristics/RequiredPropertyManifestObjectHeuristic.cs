@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kapitan.ResourceGenerator.Heuristics
+namespace Kanyon.ResourceGenerator.Heuristics
 {
     public class RequiredPropertyManifestObjectHeuristic : IManifestObjectHeuristic
     {

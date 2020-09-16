@@ -1,11 +1,11 @@
-﻿using Kapitan.Loaders;
+﻿using Kanyon.Loaders;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kapitan
+namespace Kanyon
 {
     public class ManifestPipeline
     {

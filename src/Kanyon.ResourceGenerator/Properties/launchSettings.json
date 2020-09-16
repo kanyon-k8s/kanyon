@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Kapitan.ResourceGenerator": {
+    "Kanyon.ResourceGenerator": {
       "commandName": "Project",
       "commandLineArgs": "c:\\temp\\swagger.json -o C:\\temp\\src -a v1alpha1 -g grouptest.k8s.io"
     }

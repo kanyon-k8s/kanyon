@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kapitan.ResourceGenerator.Heuristics
+namespace Kanyon.ResourceGenerator.Heuristics
 {
     public class KubernetesExtensionManifestObjectHeuristic : IManifestObjectHeuristic
     {

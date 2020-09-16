@@ -1,13 +1,13 @@
 ﻿using System;
-using Kapitan.Kubernetes.Core.V1;
-using Kapitan.Kubernetes.Apps.V1;
+using Kanyon.Kubernetes.Core.V1;
+using Kanyon.Kubernetes.Apps.V1;
 using System.Collections.Generic;
 
-[assembly: Kapitan.Core.KapitanManifest(typeof(Kapitan.Demos.GettingStarted.Manifest))]
+[assembly: Kanyon.Core.KanyonManifest(typeof(Kanyon.Demos.GettingStarted.Manifest))]
 
-namespace Kapitan.Demos.GettingStarted
+namespace Kanyon.Demos.GettingStarted
 {
-    public class Manifest : Kapitan.Core.Manifest
+    public class Manifest : Kanyon.Core.Manifest
     {
         public Manifest()
         {

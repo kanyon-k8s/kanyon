@@ -7,7 +7,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kapitan.Loaders
+namespace Kanyon.Loaders
 {
     public class ScriptLoader<T>
     {

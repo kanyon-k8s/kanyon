@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Kapitan.Core
+namespace Kanyon.Core
 {
     public class Manifest : List<IManifestObject>
     {

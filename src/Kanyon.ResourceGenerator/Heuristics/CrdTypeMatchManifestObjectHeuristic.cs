@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kapitan.ResourceGenerator.Heuristics
+namespace Kanyon.ResourceGenerator.Heuristics
 {
     public class CrdTypeMatchManifestObjectHeuristic : IManifestObjectHeuristic
     {

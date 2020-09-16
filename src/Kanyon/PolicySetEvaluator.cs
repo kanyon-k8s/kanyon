@@ -1,12 +1,12 @@
-﻿using Kapitan.Core;
-using Kapitan.Loaders;
+﻿using Kanyon.Core;
+using Kanyon.Loaders;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kapitan
+namespace Kanyon
 {
     public class PolicySetEvaluator
     {

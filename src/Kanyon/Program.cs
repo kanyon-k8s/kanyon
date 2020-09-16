@@ -1,6 +1,6 @@
-﻿using Kapitan.Configuration;
-using Kapitan.Filters;
-using Kapitan.Loaders;
+﻿using Kanyon.Configuration;
+using Kanyon.Filters;
+using Kanyon.Loaders;
 using McMaster.Extensions.CommandLineUtils;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Kapitan
+namespace Kanyon
 {
     public class Program
     {

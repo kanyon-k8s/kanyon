@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Kapitan.Loaders
+namespace Kanyon.Loaders
 {
     [Serializable]
     internal class MissingManifestException : Exception

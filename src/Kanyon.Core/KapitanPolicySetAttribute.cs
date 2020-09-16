@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kapitan.Core
+namespace Kanyon.Core
 {
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-    public class KapitanPolicySetAttribute : Attribute
+    public class KanyonPolicySetAttribute : Attribute
     {
-        public KapitanPolicySetAttribute(Type policySetType)
+        public KanyonPolicySetAttribute(Type policySetType)
         {
             PolicySetType = policySetType;
         }

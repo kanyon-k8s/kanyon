@@ -1,5 +1,5 @@
 ﻿using Humanizer;
-using Kapitan.ResourceGenerator.Heuristics;
+using Kanyon.ResourceGenerator.Heuristics;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using System;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Kapitan.ResourceGenerator
+namespace Kanyon.ResourceGenerator
 {
     public class TypeMapper
     {

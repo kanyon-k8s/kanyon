@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Kapitan": {
+    "Kanyon": {
       "commandName": "Project",
       "commandLineArgs": "-f C:\\temp\\configuredManifest.csx -c BuildNumber=1.2.3"
     }
