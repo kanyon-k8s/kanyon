@@ -11,7 +11,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/kanyon-k8s/kanyon</PackageProjectUrl>
     <PackageTags>Kubernetes</PackageTags>
-    <VersionPrefix>2.1.0</VersionPrefix>
+    <VersionPrefix>3.0.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
