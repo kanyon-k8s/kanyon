@@ -1,4 +1,4 @@
-#r "nuget: Kanyon.Kubernetes, 2.1.0"
+#r "nuget: Kanyon.Kubernetes, 3.0.0-prerelease-20200916060639"
 
 using Kanyon.Kubernetes.Apps.V1;
 using Kanyon.Kubernetes.Core.V1;

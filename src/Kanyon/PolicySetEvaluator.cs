@@ -19,14 +19,17 @@ namespace Kanyon
 
         public async Task Evaluate(Manifest manifest, Dictionary<string, string> configuration)
         {
-            var policySet = await loader?.Load();
-            if (policySet != null)
+            if (loader != null)
             {
-                foreach (IPolicy policy in policySet)
+                var policySet = await loader.Load();
+                if (policySet != null)
                 {
-                    foreach (IManifestObject obj in manifest)
+                    foreach (IPolicy policy in policySet)
                     {
-                        policy.Evaluate(obj, configuration);
+                        foreach (IManifestObject obj in manifest)
+                        {
+                            policy.Evaluate(obj, configuration);
+                        }
                     }
                 }
             }
