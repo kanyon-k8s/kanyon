@@ -34,35 +34,45 @@ namespace Kanyon
 
         private async System.Threading.Tasks.Task OnExecuteAsync()
         {
-            var manifestFile = new FileInfo(ManifestSource);
-            if (!manifestFile.Exists)
+            try
             {
-                Console.Error.WriteLine($"Could not find manifest {ManifestSource}. Exiting...");
-                return;
-            }
+                var manifestFile = new FileInfo(ManifestSource);
+                if (!manifestFile.Exists)
+                {
+                    Console.Error.WriteLine($"Could not find manifest {ManifestSource}. Exiting...");
+                    return;
+                }
 
-            var providers = new List<IManifestConfigurationProvider>()
+                var providers = new List<IManifestConfigurationProvider>()
             {
                 new GlobalOptionsManifestConfigurationProvider(this),
                 new EnvironmentManifestConfigurationProvider()
             };
 
-            if (Configuration != null && Configuration.Any())
-            {
-                providers.Add(new ArgumentManifestConfigurationProvider(Configuration));
+                if (Configuration != null && Configuration.Any())
+                {
+                    providers.Add(new ArgumentManifestConfigurationProvider(Configuration));
+                }
+
+                PolicySetEvaluator policyEvaluator = null;
+                IPolicySetLoader policyLoader = null;
+                if (!string.IsNullOrEmpty(PolicySetSource)) policyLoader = PolicySetLoaderFactory.BuildPolicySetLoader(new FileInfo(PolicySetSource), Verbose, PolicySetName);
+                policyEvaluator = new PolicySetEvaluator(policyLoader);
+
+                var processor = new ManifestProcessor(providers);
+                var loader = ManifestLoaderFactory.BuildManifestLoader(manifestFile, Verbose);
+                var filter = ManifestFilterFactory.BuildManifestFilter(EmitCrds);
+                var serializer = new ManifestSerializer(filter);
+                var pipeline = new ManifestPipeline(processor, loader, serializer, policyEvaluator);
+                await pipeline.ExecutePipeline(manifestFile);
             }
+            catch (Exception ex)
+            {
+                if (Verbose) Console.Error.WriteLine(ex.ToString());
+                else Console.Error.WriteLine(ex.Message);
 
-            PolicySetEvaluator policyEvaluator = null;
-            IPolicySetLoader policyLoader = null;
-            if (!string.IsNullOrEmpty(PolicySetSource)) policyLoader = PolicySetLoaderFactory.BuildPolicySetLoader(new FileInfo(PolicySetSource), Verbose, PolicySetName);
-            policyEvaluator = new PolicySetEvaluator(policyLoader);
-
-            var processor = new ManifestProcessor(providers);
-            var loader = ManifestLoaderFactory.BuildManifestLoader(manifestFile, Verbose);
-            var filter = ManifestFilterFactory.BuildManifestFilter(EmitCrds);
-            var serializer = new ManifestSerializer(filter);
-            var pipeline = new ManifestPipeline(processor, loader, serializer, policyEvaluator);
-            await pipeline.ExecutePipeline(manifestFile);
+                Environment.ExitCode = -1;
+            }
         }
     }
 }

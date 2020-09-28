@@ -1,6 +1,7 @@
 ﻿using Dotnet.Script;
 using Dotnet.Script.Core;
 using Dotnet.Script.Core.Commands;
+using Microsoft.CodeAnalysis.Scripting;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,16 +16,17 @@ namespace Kanyon.Loaders
 
         public async Task<T> Load(FileInfo file)
         {
+            Console.Error.WriteLine($"Compiling {file.FullName}");
+
             var console = new ScriptConsole(Console.Error, Console.In, Console.Error);
-            var logger = LogHelper.CreateLogFactory(Verbose ? "debug" : "info");
+            var logger = LogHelper.CreateLogFactory(Verbose ? "debug" : "warning");
 
             var manifestSource = File.ReadAllText(file.FullName);
 
             var command = new ExecuteCodeCommand(console, logger);
             var options = new ExecuteCodeCommandOptions(manifestSource, file.DirectoryName, new string[] { }, Microsoft.CodeAnalysis.OptimizationLevel.Debug, true, null);
 
-            var retval = await command.Execute<T>(options);
-            return retval;
+            return await command.Execute<T>(options);
         }
     }
 }
