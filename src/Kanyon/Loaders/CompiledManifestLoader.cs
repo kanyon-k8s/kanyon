@@ -24,7 +24,7 @@ namespace Kanyon.Loaders
                 {
                     manifestType = assembly.GetExportedTypes().Single(t => typeof(Manifest).IsAssignableFrom(t));
                 }
-                catch (InvalidOperationException iopEx)
+                catch (InvalidOperationException)
                 {
                     throw new MissingManifestException("No manifest could be loaded from the provided assembly. Please make sure that either there is a single class inheriting from Manifest publically available, or that the assembly is decorated with the KanyonManifestAttribute");
                 }
