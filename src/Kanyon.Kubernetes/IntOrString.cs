@@ -21,5 +21,15 @@ namespace Kanyon.Kubernetes
         {
             return new IntOrString(Convert.ToString(v));
         }
+
+        public static implicit operator string(IntOrString v)
+        {
+            return v.Value;
+        }
+
+        public static implicit operator IntOrString(string v)
+        {
+            return new IntOrString(v);
+        }
     }
 }

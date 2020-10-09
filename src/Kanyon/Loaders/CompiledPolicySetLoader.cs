@@ -30,7 +30,7 @@ namespace Kanyon.Loaders
                 {
                     policySetType = assembly.GetExportedTypes().Single(t => typeof(PolicySet).IsAssignableFrom(t));
                 }
-                catch (InvalidOperationException iopEx)
+                catch (InvalidOperationException)
                 {
                     throw new MissingManifestException("No policy set could be loaded from the provided assembly. Please make sure that either there is a single class inheriting from PolicySet publically available, or that the assembly is decorated with the KanyonPolicySetAttribute");
                 }

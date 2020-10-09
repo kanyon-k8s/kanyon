@@ -77,35 +77,45 @@ namespace Kanyon
 
         private async System.Threading.Tasks.Task OnExecuteAsync(CommandLineApplication app)
         {
-            if (IsHelpRequested)
-            {
-                await EvaluateHelp(app);
-                return;
+            try
+            { 
+                if (IsHelpRequested)
+                {
+                    await EvaluateHelp(app);
+                    return;
+                }
+
+                var loader = BuildManifestLoader(out var manifestFile);
+                if (loader == null) return;
+
+                var providers = new List<IManifestConfigurationProvider>()
+                {
+                    new GlobalOptionsManifestConfigurationProvider(this),
+                    new EnvironmentManifestConfigurationProvider()
+                };
+
+                if (Configuration != null && Configuration.Any())
+                {
+                    providers.Add(new ArgumentManifestConfigurationProvider(Configuration));
+                }
+
+                IPolicySetLoader policyLoader = null;
+                if (!string.IsNullOrEmpty(PolicySetSource)) policyLoader = PolicySetLoaderFactory.BuildPolicySetLoader(new FileInfo(PolicySetSource), Verbose, PolicySetName);
+                PolicySetEvaluator policyEvaluator = new PolicySetEvaluator(policyLoader);
+
+                var processor = new ManifestProcessor(providers);
+                var filter = ManifestFilterFactory.BuildManifestFilter(EmitCrds);
+                var serializer = new ManifestSerializer(filter);
+                var pipeline = new ManifestPipeline(processor, loader, serializer, policyEvaluator);
+                await pipeline.ExecutePipeline(manifestFile);
             }
-
-            var loader = BuildManifestLoader(out var manifestFile);
-            if (loader == null) return;
-
-            var providers = new List<IManifestConfigurationProvider>()
+            catch (Exception ex)
             {
-                new GlobalOptionsManifestConfigurationProvider(this),
-                new EnvironmentManifestConfigurationProvider()
-            };
+                if (Verbose) Console.Error.WriteLine(ex.ToString());
+                else Console.Error.WriteLine(ex.Message);
 
-            if (Configuration != null && Configuration.Any())
-            {
-                providers.Add(new ArgumentManifestConfigurationProvider(Configuration));
+                Environment.ExitCode = -1;
             }
-
-            IPolicySetLoader policyLoader = null;
-            if (!string.IsNullOrEmpty(PolicySetSource)) policyLoader = PolicySetLoaderFactory.BuildPolicySetLoader(new FileInfo(PolicySetSource), Verbose, PolicySetName);
-            PolicySetEvaluator policyEvaluator = new PolicySetEvaluator(policyLoader);
-
-            var processor = new ManifestProcessor(providers);
-            var filter = ManifestFilterFactory.BuildManifestFilter(EmitCrds);
-            var serializer = new ManifestSerializer(filter);
-            var pipeline = new ManifestPipeline(processor, loader, serializer, policyEvaluator);
-            await pipeline.ExecutePipeline(manifestFile);
         }
     }
 }
