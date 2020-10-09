@@ -2,7 +2,7 @@
   "profiles": {
     "Kanyon": {
       "commandName": "Project",
-      "commandLineArgs": "-f C:\\temp\\configuredManifest.csx -c BuildNumber=1.2.3"
+      "commandLineArgs": "-h -f c:\\temp\\kanyon-helptext\\manifest.csx"
     }
   }
 }
