@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Kanyon.Core
 {
@@ -7,6 +8,11 @@ namespace Kanyon.Core
         public virtual void ConfigureItems(Dictionary<string, string> configuration)
         {
             
+        }
+
+        public virtual IEnumerable<HelpText> GetHelpText()
+        {
+            return Enumerable.Empty<HelpText>();
         }
 
         public void Add(Manifest item)
