@@ -10,11 +10,6 @@ namespace Kanyon.Core
             
         }
 
-        public virtual IEnumerable<HelpText> GetHelpText()
-        {
-            return Enumerable.Empty<HelpText>();
-        }
-
         public void Add(Manifest item)
         {
             AddRange(item);
