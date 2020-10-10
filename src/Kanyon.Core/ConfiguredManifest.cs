@@ -33,7 +33,7 @@ namespace Kanyon.Core
             ConfigureItems(serializedConfiguration);
         }
 
-        public override IEnumerable<HelpText> GetHelpText()
+        public IEnumerable<HelpText> GetHelpText()
         {
             var configurationType = typeof(T);
             var properties = configurationType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
