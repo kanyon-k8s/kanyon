@@ -26,7 +26,7 @@ namespace Kanyon.Core
 
                 if (configuration.ContainsKey(configKey))
                 {
-                    property.SetValue(serializedConfiguration, configKey);
+                    property.SetValue(serializedConfiguration, configuration[configKey]);
                 }
             }
 
