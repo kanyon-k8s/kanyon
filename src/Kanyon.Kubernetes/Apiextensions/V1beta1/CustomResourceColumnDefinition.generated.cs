@@ -7,6 +7,7 @@ namespace Kanyon.Kubernetes.Apiextensions.V1beta1
 {
     public partial class CustomResourceColumnDefinition
     {
+        [JsonProperty("JSONPath")]
         /** <summary>JSONPath is a simple JSON path (i.e. with array notation) which is evaluated against each custom resource to produce the value for this column.</summary> */
         public string JSONPath { get; set; }
         /** <summary>description is a human readable description of this column.</summary> */
