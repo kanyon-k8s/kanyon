@@ -37,10 +37,10 @@ namespace Kanyon.Yaml
 
         private IPropertyDescriptor TrimPropertySuffix(IPropertyDescriptor pd, Type type)
         {
-            if (!pd.Name.EndsWith("Property"))
-            {
-                return pd;
-            }
+            //if (!pd.Name.EndsWith("Property"))
+            //{
+            //    return pd;
+            //}
 
             // This might have been renamed by AutoRest.  See if there is a
             // JsonPropertyAttribute.PropertyName and use that instead if there is.
