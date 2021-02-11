@@ -1,5 +1,4 @@
 ﻿using Microsoft.OpenApi.Models;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -29,7 +28,7 @@ namespace Kanyon.Yaml
                     .WithNamingConvention(new CamelCaseNamingConvention())
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new WrappedStringYamlConverter())
-                    .WithEventEmitter(e => new k8s.StringQuotingEmitter(e))
+                    .WithEventEmitter(e => new StringQuotingEmitter(e))
                     .WithAttributeOverride<OpenApiSchema>(s => s.AdditionalPropertiesAllowed, new YamlIgnoreAttribute())
                     .BuildValueSerializer();
             emitter.Emit(new StreamStart());

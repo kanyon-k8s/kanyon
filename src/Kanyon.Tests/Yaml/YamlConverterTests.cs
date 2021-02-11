@@ -301,5 +301,74 @@ namespace Kanyon.Yaml.Tests
 
             Assert.IsFalse(yaml.Contains("additionalPropertiesAllowed: true"));
         }
+
+        [TestMethod]
+        public void SerializeObject_WithAmbiguousValue_StringIsDoubleQuoted()
+        {
+            var manifest = new Kanyon.Kubernetes.Apps.V1.Deployment
+            {
+                metadata = new Kanyon.Kubernetes.Core.V1.ObjectMeta
+                {
+                    name = "sql"
+                },
+                spec = new Kanyon.Kubernetes.Apps.V1.DeploymentSpec
+                {
+                    replicas = 1,
+                    selector = new Kanyon.Kubernetes.Core.V1.LabelSelector
+                    {
+                        matchLabels = new Dictionary<object, object>
+                    {
+                        { "app", "sql" }
+                    }
+                    },
+                    template = new Kanyon.Kubernetes.Core.V1.PodTemplateSpec
+                    {
+                        metadata = new Kanyon.Kubernetes.Core.V1.ObjectMeta
+                        {
+                            labels = new Dictionary<object, object>
+                        {
+                            { "app", "sql" },
+                            { "tier", "db" }
+                        }
+                        },
+                        spec = new Kanyon.Kubernetes.Core.V1.PodSpec
+                        {
+                            containers = new List<Kanyon.Kubernetes.Core.V1.Container>
+                        {
+                            new Kanyon.Kubernetes.Core.V1.Container
+                            {
+                                env = new List<Kanyon.Kubernetes.Core.V1.EnvVar>
+                                {
+                                    new Kanyon.Kubernetes.Core.V1.EnvVar
+                                    {
+                                        name = "MSSQL_PID",
+                                        value = "Developer"
+                                    },
+                                    new Kanyon.Kubernetes.Core.V1.EnvVar
+                                    {
+                                        name = "ACCEPT_EULA",
+                                        value = "Y"
+                                    }
+                                },
+                                image = "mcr.microsoft.com/mssql/server:2017-latest",
+                                name = "mssql",
+                                ports = new List<Kanyon.Kubernetes.Core.V1.ContainerPort>
+                                {
+                                    new Kanyon.Kubernetes.Core.V1.ContainerPort
+                                    {
+                                        containerPort = 1433
+                                    }
+                                }
+                            }
+                        }
+                        }
+                    }
+                }
+            };
+
+            var result = YamlConverter.SerializeObject(manifest);
+
+            Assert.IsTrue(result.Contains("\"Y\""));
+        }
     }
 }
