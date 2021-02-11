@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.OpenApi.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -19,7 +20,7 @@ namespace Kanyon.Yaml
 
             // This allows an extension point to walk through the object graph and make serialization fixups. This is primarily driven by the OpenAPI serialization, and if we can find a better way
             // to manage that process, this can be replaced as it's not easily extensible
-            var walker = new ObjectWalker() { Strategies = new List<IObjectWalkStrategy> { new EmptyEnumerableWalkStrategy(), new AdditionalPropertiesFixingWalkStrategy() } };
+            var walker = new ObjectWalker() { Strategies = new List<IObjectWalkStrategy> { new EmptyEnumerableWalkStrategy() } };
             walker.Walk(value);
 
             var serializer =
@@ -29,6 +30,7 @@ namespace Kanyon.Yaml
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new WrappedStringYamlConverter())
                     .WithEventEmitter(e => new k8s.StringQuotingEmitter(e))
+                    .WithAttributeOverride<OpenApiSchema>(s => s.AdditionalPropertiesAllowed, new YamlIgnoreAttribute())
                     .BuildValueSerializer();
             emitter.Emit(new StreamStart());
             emitter.Emit(new DocumentStart());
