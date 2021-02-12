@@ -8,6 +8,10 @@ namespace Kanyon.Yaml
 {
     public class StringQuotingEmitter : ChainedEventEmitter
     {
+        // Patterns from https://yaml.org/spec/1.2/spec.html#id2804356
+        private static readonly Regex QuotedRegex =
+            new Regex(@"^(\~|null|true|false|y|Y|n|N|off|on-?(0|[1-9][0-9]*)(\.[0-9]*)?([eE][-+]?[0-9]+)?)?$");
+
         public StringQuotingEmitter(IEventEmitter next)
             : base(next)
         {
@@ -30,11 +34,14 @@ namespace Kanyon.Yaml
                     break;
                 case TypeCode.String:
                     var val = eventInfo.Source.Value.ToString();
-                    if (val.IndexOf('\n') > -1)
+                    if (QuotedRegex.IsMatch(val))
+                    {
+                        eventInfo.Style = ScalarStyle.DoubleQuoted;
+                    }
+                    else if (val.IndexOf('\n') > -1)
                     {
                         eventInfo.Style = ScalarStyle.Literal;
                     }
-                    else eventInfo.Style = ScalarStyle.DoubleQuoted;
 
                     break;
             }
