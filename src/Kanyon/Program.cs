@@ -38,6 +38,9 @@ namespace Kanyon
         [Option("-h|-?|--help")]
         public bool IsHelpRequested { get; set; }
 
+        [Option("-w|--wait")]
+        public bool WaitAfterCompletion { get; set; }
+
         private async Task EvaluateHelp(CommandLineApplication app)
         {
             // Write Default Help
@@ -115,6 +118,14 @@ namespace Kanyon
                 else Console.Error.WriteLine(ex.Message);
 
                 Environment.ExitCode = -1;
+            }
+            finally
+            {
+                if (WaitAfterCompletion)
+                {
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                }
             }
         }
     }
