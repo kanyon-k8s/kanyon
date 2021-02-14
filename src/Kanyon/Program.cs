@@ -41,6 +41,9 @@ namespace Kanyon
         [Option("-w|--wait")]
         public bool WaitAfterCompletion { get; set; }
 
+        [Option("-e|--env-file")]
+        public string EnvFile { get; set; }
+
         private async Task EvaluateHelp(CommandLineApplication app)
         {
             // Write Default Help
@@ -78,10 +81,11 @@ namespace Kanyon
             return loader;
         }
 
-        private async System.Threading.Tasks.Task OnExecuteAsync(CommandLineApplication app)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Used by reflection")]
+        private async Task OnExecuteAsync(CommandLineApplication app)
         {
             try
-            { 
+            {
                 if (IsHelpRequested)
                 {
                     await EvaluateHelp(app);
@@ -90,17 +94,7 @@ namespace Kanyon
 
                 var loader = BuildManifestLoader(out var manifestFile);
                 if (loader == null) return;
-
-                var providers = new List<IManifestConfigurationProvider>()
-                {
-                    new GlobalOptionsManifestConfigurationProvider(this),
-                    new EnvironmentManifestConfigurationProvider()
-                };
-
-                if (Configuration != null && Configuration.Any())
-                {
-                    providers.Add(new ArgumentManifestConfigurationProvider(Configuration));
-                }
+                List<IManifestConfigurationProvider> providers = BuildConfiguration();
 
                 IPolicySetLoader policyLoader = null;
                 if (!string.IsNullOrEmpty(PolicySetSource)) policyLoader = PolicySetLoaderFactory.BuildPolicySetLoader(new FileInfo(PolicySetSource), Verbose, PolicySetName);
@@ -127,6 +121,27 @@ namespace Kanyon
                     Console.ReadKey();
                 }
             }
+        }
+
+        private List<IManifestConfigurationProvider> BuildConfiguration()
+        {
+            var providers = new List<IManifestConfigurationProvider>()
+                {
+                    new GlobalOptionsManifestConfigurationProvider(this),
+                    new EnvironmentManifestConfigurationProvider()
+                };
+
+            if (Configuration != null && Configuration.Any())
+            {
+                providers.Add(new ArgumentManifestConfigurationProvider(Configuration));
+            }
+
+            if (!string.IsNullOrEmpty(EnvFile))
+            {
+                providers.Add(new EnvFileManifestConfigurationProvider(EnvFile));
+            }
+
+            return providers;
         }
     }
 }
