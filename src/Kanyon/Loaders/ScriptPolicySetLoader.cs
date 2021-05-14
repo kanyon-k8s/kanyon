@@ -9,8 +9,6 @@ namespace Kanyon.Loaders
 {
     public class ScriptPolicySetLoader : ScriptLoader<IEnumerable<IPolicy>>, IPolicySetLoader
     {
-        public FileInfo Source { get; set; }
-
         public async Task<IEnumerable<IPolicy>> Load()
         {
             return await Load(Source);

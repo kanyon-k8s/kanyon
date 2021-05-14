@@ -13,9 +13,9 @@ namespace Kanyon.Loaders
 {
     public class ScriptManifestLoader : ScriptLoader<Manifest>, IManifestLoader
     {
-        public async Task<Manifest> LoadManifest(FileInfo file)
+        public async Task<Manifest> LoadManifest()
         {
-            return await Load(file);
+            return await Load(Source);
         }
     }
 }

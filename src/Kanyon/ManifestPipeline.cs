@@ -22,9 +22,9 @@ namespace Kanyon
             this.policySet = policySet;
         }
 
-        public async Task ExecutePipeline(FileInfo file)
+        public async Task ExecutePipeline()
         {
-            var manifest = await loader.LoadManifest(file);
+            var manifest = await loader.LoadManifest();
 
             var config = processor.BuildConfiguration();
             processor.Process(manifest, config);

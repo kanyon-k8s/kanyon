@@ -11,9 +11,25 @@ namespace Kanyon.Loaders
 {
     public class CompiledManifestLoader : IManifestLoader
     {
-        public async Task<Manifest> LoadManifest(FileInfo file)
+        private Assembly assembly;
+
+        public CompiledManifestLoader FromFile(FileInfo file)
         {
-            var assembly = Assembly.LoadFrom(file.FullName);
+            assembly = Assembly.LoadFrom(file.FullName);
+
+            return this;
+        }
+
+        public CompiledManifestLoader FromBytes(byte[] assemblyBytes)
+        {
+            assembly = Assembly.Load(assemblyBytes);
+
+            return this;
+        }
+
+        public async Task<Manifest> LoadManifest()
+        {
+            if (assembly == null) throw new ArgumentException("No assembly was loaded");
             var manifestType = assembly.GetCustomAttribute<KanyonManifestAttribute>()?.ManifestType;
 
             if (manifestType == null)

@@ -51,9 +51,9 @@ namespace Kanyon
 
             if (!string.IsNullOrWhiteSpace(ManifestSource))
             {
-                var loader = BuildManifestLoader(out var manifestFile);
+                var loader = BuildManifestLoader();
 
-                var manifest = await loader.LoadManifest(manifestFile);
+                var manifest = await loader.LoadManifest();
                 var provider = manifest as IHelpTextProvider;
 
                 Console.WriteLine();
@@ -67,16 +67,16 @@ namespace Kanyon
             }
         }
 
-        private IManifestLoader BuildManifestLoader(out FileInfo manifestFile)
+        private IManifestLoader BuildManifestLoader()
         {
-            manifestFile = new FileInfo(ManifestSource);
-            if (!manifestFile.Exists)
+            var manifestFile = new FileInfo(ManifestSource);
+            if (!manifestFile.Exists && !Uri.IsWellFormedUriString(ManifestSource, UriKind.Absolute))
             {
                 Console.Error.WriteLine($"Could not find manifest {ManifestSource}. Exiting...");
                 return null;
             }
 
-            var loader = ManifestLoaderFactory.BuildManifestLoader(manifestFile, Verbose);
+            var loader = ManifestLoaderFactory.BuildManifestLoader(ManifestSource, Verbose);
 
             return loader;
         }
@@ -92,19 +92,19 @@ namespace Kanyon
                     return;
                 }
 
-                var loader = BuildManifestLoader(out var manifestFile);
+                var loader = BuildManifestLoader();
                 if (loader == null) return;
                 List<IManifestConfigurationProvider> providers = BuildConfiguration();
 
                 IPolicySetLoader policyLoader = null;
-                if (!string.IsNullOrEmpty(PolicySetSource)) policyLoader = PolicySetLoaderFactory.BuildPolicySetLoader(new FileInfo(PolicySetSource), Verbose, PolicySetName);
+                if (!string.IsNullOrEmpty(PolicySetSource)) policyLoader = PolicySetLoaderFactory.BuildPolicySetLoader(PolicySetSource, Verbose, PolicySetName);
                 PolicySetEvaluator policyEvaluator = new PolicySetEvaluator(policyLoader);
 
                 var processor = new ManifestProcessor(providers);
                 var filter = ManifestFilterFactory.BuildManifestFilter(EmitCrds);
                 var serializer = new ManifestSerializer(filter);
                 var pipeline = new ManifestPipeline(processor, loader, serializer, policyEvaluator);
-                await pipeline.ExecutePipeline(manifestFile);
+                await pipeline.ExecutePipeline();
             }
             catch (Exception ex)
             {

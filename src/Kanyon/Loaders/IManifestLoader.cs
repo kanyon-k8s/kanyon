@@ -6,6 +6,6 @@ namespace Kanyon.Loaders
 {
     public interface IManifestLoader
     {
-        Task<Manifest> LoadManifest(FileInfo file);
+        Task<Manifest> LoadManifest();
     }
 }

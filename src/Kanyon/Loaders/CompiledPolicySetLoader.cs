@@ -14,9 +14,24 @@ namespace Kanyon.Loaders
         public string PolicySetName { get; set; }
         public FileInfo Source { get; set; }
 
+        protected Assembly assembly;
+
+        public CompiledPolicySetLoader FromBytes(byte[] assemblyBytes)
+        {
+            assembly = Assembly.Load(assemblyBytes);
+
+            return this;
+        }
+
+        public CompiledPolicySetLoader FromFile(FileInfo path)
+        {
+            assembly = Assembly.LoadFrom(path.FullName);
+
+            return this;
+        }
+
         public async Task<IEnumerable<IPolicy>> Load()
         {
-            var assembly = Assembly.LoadFrom(Source.FullName);
             Type policySetType = null;
             var attributes = assembly.GetCustomAttributes<KanyonPolicySetAttribute>();
             if (!string.IsNullOrEmpty(PolicySetName)) attributes = attributes.Where(attr => attr.Name == PolicySetName);

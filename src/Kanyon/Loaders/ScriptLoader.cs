@@ -14,6 +14,9 @@ namespace Kanyon.Loaders
     {
         public bool Verbose { get; set; }
 
+        public FileInfo Source { get; set; }
+
+
         public async Task<T> Load(FileInfo file)
         {
             Console.Error.WriteLine($"Compiling {file.FullName}");
