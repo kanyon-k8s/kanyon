@@ -1,9 +1,10 @@
-#r "nuget: Kanyon.Kubernetes, 3.0.0-prerelease-20200916060639"
+#r "nuget: Kanyon.Kubernetes, 3.1.3"
 
 using Kanyon.Kubernetes.Apps.V1;
 using Kanyon.Kubernetes.Core.V1;
+using Kanyon.Core;
 
-new Kanyon.Core.Manifest() {
+new Manifest() {
     new Deployment() {
         metadata = new ObjectMeta {
             name = "helloworld",
