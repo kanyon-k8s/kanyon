@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kanyon.Core\Kanyon.Core.csproj" />
+    <ProjectReference Include="..\Kanyon.Kubernetes\Kanyon.Kubernetes.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KubernetesClient" Version="2.0.29" />
+  </ItemGroup>
+
+</Project>

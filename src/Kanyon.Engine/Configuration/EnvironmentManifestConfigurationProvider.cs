@@ -4,7 +4,7 @@ using System.Text;
 using System.Linq;
 using System.Collections;
 
-namespace Kanyon.Configuration
+namespace Kanyon.Engine.Configuration
 {
     public class EnvironmentManifestConfigurationProvider : IManifestConfigurationProvider
     {

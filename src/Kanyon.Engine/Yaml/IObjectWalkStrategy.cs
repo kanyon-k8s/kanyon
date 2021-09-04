@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Kanyon.Yaml
+namespace Kanyon.Engine.Yaml
 {
     public interface IObjectWalkStrategy
     {

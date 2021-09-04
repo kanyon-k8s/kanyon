@@ -1,5 +1,5 @@
-﻿using Kanyon.Configuration;
-using Kanyon.Core;
+﻿using Kanyon.Core;
+using Kanyon.Engine.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;

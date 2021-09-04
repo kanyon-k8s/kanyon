@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Kanyon.Yaml
+namespace Kanyon.Engine.Yaml
 {
     public class ObjectWalker
     {

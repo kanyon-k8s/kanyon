@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Kanyon.Yaml
+namespace Kanyon.Engine.Yaml
 {
     public class EmptyEnumerableWalkStrategy : IObjectWalkStrategy
     {
