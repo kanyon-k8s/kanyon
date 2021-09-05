@@ -175,7 +175,7 @@ dotnet tool install --global kanyon
 This will install the latest version from NuGet and add it into your path.
 
 ### How to generate manifests
-Kanyon writes the YAML directly to stdout to make it easy to pipe the output to file or to kubectl. To generate a manifest, simply run 
+Kanyon writes the YAML directly to stdout to make it easy to pipe the output to file or to kubectl. To generate a manifest, run 
 ```
 kanyon -f your-manifest-filename.csx
 ``` 
@@ -187,6 +187,11 @@ kanyon -f your-manifest-filename.csx | kubectl apply -f -
 Configuration values can also be provided over the command line. Values must be provided using the `key=value` format. To pass a BuildNumber variable into a Kanyon manifest, you can run 
 ```
 kanyon -f your-manifest-filename.csx -c BuildNumber=2.0.0
+```
+
+Compiled manifests and policy sets can also be loaded directly from a URL, rather than a local file path. In order to load manifests or policy sets from a URL, the `KANYON_ALLOWUNSAFECODE` environment variable must be set to `true`. Then, run
+```
+kanyon -f https://your.domain.name/manifest.dll -c BuildNumber=2.0.0
 ```
 
 ## Background
