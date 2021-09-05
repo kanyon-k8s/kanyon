@@ -7,7 +7,7 @@
     <RepositoryUrl>https://github.com/kanyon-k8s/kanyon</RepositoryUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <Description>Kanyon.Core provides the base objects to build Kanyon manifests on top of</Description>
+    <Description>Kanyon.Engine provides the classes needed to generate YAML from Kanyon manifests</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/kanyon-k8s/kanyon</PackageProjectUrl>
     <PackageTags>Kubernetes</PackageTags>
@@ -15,10 +15,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+    <ProjectReference Include="..\Kanyon.Core\Kanyon.Core.csproj" />
+    <ProjectReference Include="..\Kanyon.Kubernetes\Kanyon.Kubernetes.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KubernetesClient" Version="2.0.29" />
   </ItemGroup>
 
 </Project>

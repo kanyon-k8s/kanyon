@@ -3,6 +3,7 @@ using Dotnet.Script.Core;
 using Dotnet.Script.Core.Commands;
 using Dotnet.Script.DependencyModel.Logging;
 using Kanyon.Core;
+using Kanyon.Engine.Loaders;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,9 +14,9 @@ namespace Kanyon.Loaders
 {
     public class ScriptManifestLoader : ScriptLoader<Manifest>, IManifestLoader
     {
-        public async Task<Manifest> LoadManifest(FileInfo file)
+        public async Task<Manifest> LoadManifest()
         {
-            return await Load(file);
+            return await Load(Source);
         }
     }
 }

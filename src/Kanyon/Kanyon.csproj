@@ -15,18 +15,17 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/kanyon-k8s/kanyon</PackageProjectUrl>
     <PackageTags>Kubernetes</PackageTags>
-    <VersionPrefix>3.1.4</VersionPrefix>
+    <VersionPrefix>3.2.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Dotnet.Script" Version="0.53.0" />
-    <PackageReference Include="KubernetesClient" Version="2.0.29" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20371.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Kanyon.Core\Kanyon.Core.csproj" />
-    <ProjectReference Include="..\Kanyon.Kubernetes\Kanyon.Kubernetes.csproj" />
+    <ProjectReference Include="..\Kanyon.Engine\Kanyon.Engine.csproj" />
   </ItemGroup>
 
   <ItemGroup>
