@@ -13,7 +13,7 @@ namespace Kanyon.Loaders
         public static IManifestLoader BuildManifestLoader(string file, bool isVerbose)
         {
             IManifestLoader loader = null;
-            if (Uri.IsWellFormedUriString(file, UriKind.Absolute))
+            if (Uri.IsWellFormedUriString(file, UriKind.Absolute) && Convert.ToBoolean(Environment.GetEnvironmentVariable("KANYON_ALLOWUNSAFECODE")))
             {
                 WebClient client = new WebClient();
                 var assemBytes = client.DownloadData(file);

@@ -12,7 +12,7 @@ namespace Kanyon.Loaders
     {
         public static IPolicySetLoader BuildPolicySetLoader(string filePath, bool isVerbose, string policySetName)
         {
-            if (Uri.IsWellFormedUriString(filePath, UriKind.Absolute))
+            if (Uri.IsWellFormedUriString(filePath, UriKind.Absolute) && Convert.ToBoolean(Environment.GetEnvironmentVariable("KANYON_ALLOWUNSAFECODE")))
             {
                 WebClient client = new WebClient();
                 var bytes = client.DownloadData(filePath);
