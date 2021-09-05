@@ -22,6 +22,7 @@ namespace Kanyon
             this.policySet = policySet;
         }
 
+        
         public async Task<string> ExecutePipeline()
         {
             var manifest = await loader.LoadManifest();
