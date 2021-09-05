@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Kanyon
 {
-    public class PolicySetEvaluator
+    public class PolicySetEvaluator : IPolicySetEvaluator
     {
         private readonly IPolicySetLoader loader;
 

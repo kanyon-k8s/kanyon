@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Kanyon
 {
-    public class ManifestPipeline
+    public class ManifestPipeline : IManifestPipeline
     {
-        private readonly ManifestProcessor processor;
+        private readonly IManifestConfigurationProcessor processor;
         private readonly IManifestLoader loader;
-        private readonly ManifestSerializer serializer;
-        private readonly PolicySetEvaluator policySet;
+        private readonly IManifestSerializer serializer;
+        private readonly IPolicySetEvaluator policySet;
 
-        public ManifestPipeline(ManifestProcessor processor, IManifestLoader loader, ManifestSerializer serializer, PolicySetEvaluator policySet)
+        public ManifestPipeline(IManifestConfigurationProcessor processor, IManifestLoader loader, IManifestSerializer serializer, IPolicySetEvaluator policySet)
         {
             this.processor = processor;
             this.loader = loader;
@@ -22,7 +22,7 @@ namespace Kanyon
             this.policySet = policySet;
         }
 
-        public async Task ExecutePipeline()
+        public async Task<string> ExecutePipeline()
         {
             var manifest = await loader.LoadManifest();
 
@@ -33,7 +33,7 @@ namespace Kanyon
 
             var output = serializer.ProcessManifest(manifest);
 
-            Console.WriteLine(output);
+            return output;
         }
     }
 }

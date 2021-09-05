@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Kanyon
 {
-    public class ManifestSerializer
+    public class ManifestSerializer : IManifestSerializer
     {
         private readonly IManifestFilter filter;
 

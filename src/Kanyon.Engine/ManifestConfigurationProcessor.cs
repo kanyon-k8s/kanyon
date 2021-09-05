@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Kanyon
 {
-    public class ManifestProcessor
+    public class ManifestConfigurationProcessor : IManifestConfigurationProcessor
     {
         private readonly IEnumerable<IManifestConfigurationProvider> configProviders;
 
-        public ManifestProcessor(IEnumerable<IManifestConfigurationProvider> configProviders)
+        public ManifestConfigurationProcessor(IEnumerable<IManifestConfigurationProvider> configProviders)
         {
             this.configProviders = configProviders;
         }

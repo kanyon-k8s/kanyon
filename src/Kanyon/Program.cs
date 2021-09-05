@@ -102,11 +102,13 @@ namespace Kanyon
                 if (!string.IsNullOrEmpty(PolicySetSource)) policyLoader = PolicySetLoaderFactory.BuildPolicySetLoader(PolicySetSource, Verbose, PolicySetName);
                 PolicySetEvaluator policyEvaluator = new PolicySetEvaluator(policyLoader);
 
-                var processor = new ManifestProcessor(providers);
+                var processor = new ManifestConfigurationProcessor(providers);
                 var filter = ManifestFilterFactory.BuildManifestFilter(EmitCrds);
                 var serializer = new ManifestSerializer(filter);
                 var pipeline = new ManifestPipeline(processor, loader, serializer, policyEvaluator);
-                await pipeline.ExecutePipeline();
+                var output = await pipeline.ExecutePipeline();
+
+                Console.WriteLine(output);
             }
             catch (Exception ex)
             {
