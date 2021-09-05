@@ -1,7 +1,7 @@
 ﻿using Microsoft.OpenApi.Models;
 using System.Reflection;
 
-namespace Kanyon.Yaml
+namespace Kanyon.Engine.Yaml
 {
     public class AdditionalPropertiesFixingWalkStrategy : IObjectWalkStrategy
     {

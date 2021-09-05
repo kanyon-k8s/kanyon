@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanyon.Loaders
+namespace Kanyon.Engine.Loaders
 {
     public class CompiledManifestLoader : IManifestLoader
     {

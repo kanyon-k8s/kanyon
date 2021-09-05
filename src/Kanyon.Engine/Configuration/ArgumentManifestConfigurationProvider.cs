@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kanyon.Configuration
+namespace Kanyon.Engine.Configuration
 {
     public class ArgumentManifestConfigurationProvider : IManifestConfigurationProvider
     {

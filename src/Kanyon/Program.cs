@@ -1,5 +1,7 @@
 ﻿using Kanyon.Configuration;
 using Kanyon.Core;
+using Kanyon.Engine.Configuration;
+using Kanyon.Engine.Loaders;
 using Kanyon.Filters;
 using Kanyon.Loaders;
 using McMaster.Extensions.CommandLineUtils;

@@ -5,12 +5,12 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanyon.Loaders
+namespace Kanyon.Engine.Loaders
 {
     public interface IPolicySetLoader
     {
         Task<IEnumerable<IPolicy>> Load();
 
-        public FileInfo Source { get; set; }
+        FileInfo Source { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using Dotnet.Script.Core;
 using Dotnet.Script.Core.Commands;
 using Dotnet.Script.DependencyModel.Logging;
 using Kanyon.Core;
+using Kanyon.Engine.Loaders;
 using System;
 using System.Collections.Generic;
 using System.IO;

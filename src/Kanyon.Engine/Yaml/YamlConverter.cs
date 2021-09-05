@@ -7,7 +7,7 @@ using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
-namespace Kanyon.Yaml
+namespace Kanyon.Engine.Yaml
 {
     public static class YamlConverter
     {

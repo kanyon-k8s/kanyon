@@ -6,7 +6,7 @@ using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 
-namespace Kanyon.Yaml
+namespace Kanyon.Engine.Yaml
 {
     public class WrappedStringYamlConverter : IYamlTypeConverter
     {

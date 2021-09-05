@@ -6,7 +6,7 @@ using System.Text;
 using YamlDotNet.Core;
 using YamlDotNet.Serialization;
 
-namespace Kanyon.Yaml
+namespace Kanyon.Engine.Yaml
 {
     class AutoRestTypeInspector : ITypeInspector
     {
@@ -45,7 +45,7 @@ namespace Kanyon.Yaml
             // This might have been renamed by AutoRest.  See if there is a
             // JsonPropertyAttribute.PropertyName and use that instead if there is.
             var jpa = pd.GetCustomAttribute<JsonPropertyAttribute>();
-            if (jpa == null || String.IsNullOrEmpty(jpa.PropertyName))
+            if (jpa == null || string.IsNullOrEmpty(jpa.PropertyName))
             {
                 return pd;
             }

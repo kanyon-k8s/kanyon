@@ -4,7 +4,7 @@ using YamlDotNet.Core;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.EventEmitters;
 
-namespace Kanyon.Yaml
+namespace Kanyon.Engine.Yaml
 {
     public class StringQuotingEmitter : ChainedEventEmitter
     {
