@@ -206,3 +206,21 @@ kanyon -f https://your.domain.name/manifest.dll -c BuildNumber=2.0.0
 ### Why do my script manifests fail to export a manifest?
 The script manifests must return a Manifest object as the last instruction. If a semicolon is placed at the end of the line, it is treated as a full statement and nothing is returned.
  
+### I'm having trouble with my manifest. Can I debug it?
+You can debug compiled manifests using Visual Studio with some setup work. In the .csproj file, add the following snippet:
+```xml
+<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="dotnet publish --no-build" />
+</Target>
+```
+
+Then, in your project's launchsettings.json file, add the following profile:
+```json
+"Kanyon": {
+    "commandName": "Executable",
+    "executablePath": "kanyon",
+    "commandLineArgs": "-f publish\\$(AssemblyName).dll -w"
+}
+```
+
+After these two changes have been added, set the manifest project as the startup project and click Debug. The debugger will then launch the Kanyon shell with the published output loaded.
