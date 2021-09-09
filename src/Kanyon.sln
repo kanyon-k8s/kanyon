@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kanyon.Kubernetes", "Kanyon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kanyon.Tests", "Kanyon.Tests\Kanyon.Tests.csproj", "{5D84D280-732C-4406-A346-C15837D1D48C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanyon.Engine", "Kanyon.Engine\Kanyon.Engine.csproj", "{0CF3DF69-0710-4AFB-A2BE-CC3DF0505E07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kanyon.Engine", "Kanyon.Engine\Kanyon.Engine.csproj", "{0CF3DF69-0710-4AFB-A2BE-CC3DF0505E07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanyonVSIX", "KanyonVSIX\KanyonVSIX.csproj", "{37A384E0-6D50-49FD-B534-E349B8098EF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{0CF3DF69-0710-4AFB-A2BE-CC3DF0505E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CF3DF69-0710-4AFB-A2BE-CC3DF0505E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CF3DF69-0710-4AFB-A2BE-CC3DF0505E07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37A384E0-6D50-49FD-B534-E349B8098EF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A384E0-6D50-49FD-B534-E349B8098EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A384E0-6D50-49FD-B534-E349B8098EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A384E0-6D50-49FD-B534-E349B8098EF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
