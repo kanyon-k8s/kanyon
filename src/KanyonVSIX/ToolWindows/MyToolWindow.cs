@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,7 +22,22 @@ namespace KanyonVSIX
             var vm = new MainViewModel(dte);
             await vm.Initialize();
 
+            CommandID cmdProjectComboPopulateId = new CommandID(PackageGuids.KanyonVSIX, PackageIds.cmdProjectComboPopulate);
+            OleMenuCommand cmdProjectComboPopulate = new OleMenuCommand(ProjectComboPopulate, cmdProjectComboPopulateId);
+
+            var mcs = await VS.GetServiceAsync<OleMenuCommandService, IMenuCommandService>();
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
+            mcs.AddCommand(cmdProjectComboPopulate);
+
             return new MyToolWindowControl(dte, vm);
+        }
+
+        private void ProjectComboPopulate(object sender, EventArgs e)
+        {
+            var args = e as OleMenuCmdEventArgs;
+
+            if (args.OutValue == IntPtr.Zero) throw new ArgumentException();
         }
 
         [Guid("5f76a3f4-965f-4a18-8d65-da4810eaafc3")]

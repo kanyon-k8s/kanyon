@@ -5,11 +5,13 @@ using Kanyon;
 using Kanyon.Core;
 using Kanyon.Engine.Loaders;
 using Kanyon.Filters;
+using KanyonVSIX.Commands;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Threading;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -25,46 +27,26 @@ namespace KanyonVSIX.ViewModels
 {
     public class MainViewModel : ObservableObject
     {
+        List<VsViewModelCommand> commands = new List<VsViewModelCommand>();
+        FileSystemWatcher watcher;
+        OutputWindowPane outputWindowPane;
+        DTE2 dte;
+
         public MainViewModel(DTE2 dte)
         {
-            LoadProjectsCommand = new RelayCommand(() => LoadProjects(null));
+            LoadProjectComboBoxCommand = new RelayCommand(() => LoadProjects(null));
             this.dte = dte;
         }
 
         public string ManifestSource { get; set; }
+
+        public CompiledManifestLoader Loader { get; private set; }
 
         private ObservableCollection<ConfigurationItemViewModel> configItems;
         public ObservableCollection<ConfigurationItemViewModel> ConfigurationItems
         {
             get => configItems;
             set => SetProperty(ref configItems, value);
-        }
-
-        FileSystemWatcher watcher;
-        OutputWindowPane outputWindowPane;
-        DTE2 dte;
-
-        public async Task Initialize()
-        {
-            VS.Events.SolutionEvents.OnAfterLoadProject += LoadProjects;
-            outputWindowPane = await VS.Windows.CreateOutputWindowPaneAsync("Kanyon");
-        }
-
-        public ICommand LoadProjectsCommand { get; private set; }
-        public async void LoadProjects(Project obj)
-        {
-            try
-            {
-                var projects = await (await VS.Solutions.GetAllProjectsAsync()).ToAsyncEnumerable().WhereAwait(async p => await p.IsKindAsync(ProjectTypes.CSHARP)).ToListAsync();
-
-                AvailableProjects = new ObservableCollection<Project>(projects);
-
-                SelectedProject = await VS.Solutions.GetActiveProjectAsync();
-            }
-            catch (Exception ex)
-            {
-                ex.Log();
-            }
         }
 
         private ObservableCollection<Project> projects;
@@ -85,7 +67,28 @@ namespace KanyonVSIX.ViewModels
             }
         }
 
-        public CompiledManifestLoader Loader { get; private set; }
+        public async Task Initialize()
+        {
+            VS.Events.SolutionEvents.OnAfterLoadProject += LoadProjects;
+            outputWindowPane = await VS.Windows.CreateOutputWindowPaneAsync("Kanyon");
+        }
+
+        public async void LoadProjects(Project obj)
+        {
+            try
+            {
+                var projects = await (await VS.Solutions.GetAllProjectsAsync()).ToAsyncEnumerable().WhereAwait(async p => await p.IsKindAsync(ProjectTypes.CSHARP)).ToListAsync();
+
+                AvailableProjects = new ObservableCollection<Project>(projects);
+
+                SelectedProject = await VS.Solutions.GetActiveProjectAsync();
+            }
+            catch (Exception ex)
+            {
+                ex.Log();
+            }
+        }
+
 
         public async void LoadWatcher()
         {
