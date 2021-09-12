@@ -26,7 +26,7 @@ namespace KanyonVSIX.Commands
 
         public ICommand VmCommand { get; }
 
-        public async void Initialize()
+        public async System.Threading.Tasks.Task InitializeAsync()
         {
             CommandID cmd = new CommandID(groupGuid, commandId);
             command = new OleMenuCommand(this.Execute, cmd);

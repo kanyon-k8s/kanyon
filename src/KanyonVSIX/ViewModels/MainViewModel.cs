@@ -34,7 +34,6 @@ namespace KanyonVSIX.ViewModels
 
         public MainViewModel(DTE2 dte)
         {
-            LoadProjectComboBoxCommand = new RelayCommand(() => LoadProjects(null));
             this.dte = dte;
         }
 
@@ -67,12 +66,13 @@ namespace KanyonVSIX.ViewModels
             }
         }
 
-        public async Task Initialize()
+        public async Task InitializeAsync()
         {
             VS.Events.SolutionEvents.OnAfterLoadProject += LoadProjects;
             outputWindowPane = await VS.Windows.CreateOutputWindowPaneAsync("Kanyon");
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "All exceptions caught and swallowed")]
         public async void LoadProjects(Project obj)
         {
             try
@@ -89,7 +89,7 @@ namespace KanyonVSIX.ViewModels
             }
         }
 
-
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "All exceptions caught and swallowed")]
         public async void LoadWatcher()
         {
             if (watcher != null)
@@ -112,6 +112,7 @@ namespace KanyonVSIX.ViewModels
             watcher.EnableRaisingEvents = true;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "All exceptions caught and swallowed")]
         public async void LoadManifest()
         {
             try
@@ -123,7 +124,7 @@ namespace KanyonVSIX.ViewModels
                     var manifest = await Loader.LoadManifest() as IHelpTextProvider;
 
                     var helpText = manifest.GetHelpText();
-                    var items = helpText.Select(ht => new ConfigurationItemViewModel { Key = ht.ConfigValue, Description = ht.Description }).ToDictionary(civm => civm.Key;
+                    var items = helpText.Select(ht => new ConfigurationItemViewModel { Key = ht.ConfigValue, Description = ht.Description }).ToDictionary(civm => civm.Key);
 
                     foreach (var item in ConfigurationItems)
                     {
@@ -147,6 +148,7 @@ namespace KanyonVSIX.ViewModels
             LoadManifest();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "All exceptions caught and swallowed")]
         public async void GenerateManifest()
         {
             try

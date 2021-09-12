@@ -30,7 +30,7 @@
       </Button>
     </Buttons>
     <Combos>
-      <Combo guid="KanyonVSIX" id="ProjectCombo" priority="0x0000" type="DropDownCombo" defaultWidth="125" idCommandList="cmdProjectComboPopulate">
+      <Combo guid="KanyonVSIX" id="cmdProjectComboSelect" priority="0x0000" type="IndexCombo" defaultWidth="125" idCommandList="cmdProjectComboPopulate">
         <Parent guid="KanyonVSIX" id="ToolbarGroupID"/>
         <Strings>
           <ButtonText>Manifest Project</ButtonText>
@@ -49,7 +49,7 @@
       <IDSymbol name="MyCommand" value="0x0100" />
       <IDSymbol name="ToolbarID" value="0x1000" />
       <IDSymbol name="ToolbarGroupID" value="0x1001" />
-      <IDSymbol name="ProjectCombo" value="0x1011"/>
+      <IDSymbol name="cmdProjectComboSelect" value="0x1011"/>
       <IDSymbol name="cmdProjectComboPopulate" value="0x1012"/>
     </GuidSymbol>
   </Symbols>

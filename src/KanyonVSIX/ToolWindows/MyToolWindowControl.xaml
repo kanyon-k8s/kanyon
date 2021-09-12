@@ -15,7 +15,7 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <Label x:Name="lblHeadline" Margin="10" HorizontalAlignment="Center">Click me!!</Label>
-            <Button Content="Click me!" Click="button1_Click" Width="120" Height="80" Name="button1"/>
+            <Button Content="Click me!" Width="120" Height="80" Name="button1"/>
         </StackPanel>
     </Grid>
 </UserControl>

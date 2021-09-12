@@ -23,7 +23,7 @@ namespace KanyonVSIX
         public const int MyCommand = 0x0100;
         public const int ToolbarID = 0x1000;
         public const int ToolbarGroupID = 0x1001;
-        public const int ProjectCombo = 0x1011;
+        public const int cmdProjectComboSelect = 0x1011;
         public const int cmdProjectComboPopulate = 0x1012;
     }
 }
