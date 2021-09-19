@@ -23,16 +23,21 @@ namespace Kanyon.Loaders
             else
             {
                 FileInfo fileInfo = new FileInfo(file);
-                try
-                {
-                    AssemblyName.GetAssemblyName(fileInfo.FullName);
-                    loader = new CompiledManifestLoader().FromFile(fileInfo);
+                if (fileInfo.Extension == ".csproj") {
+                    loader = new CsprojManifestLoader().FromFile(fileInfo);
                 }
-                catch (BadImageFormatException)
-                {
-                    var scriptLoader = new ScriptManifestLoader() { Source = fileInfo, Verbose = isVerbose };
+                else {
+                    try
+                    {
+                        AssemblyName.GetAssemblyName(fileInfo.FullName);
+                        loader = new CompiledManifestLoader().FromFile(fileInfo);
+                    }
+                    catch (BadImageFormatException)
+                    {
+                        var scriptLoader = new ScriptManifestLoader() { Source = fileInfo, Verbose = isVerbose };
 
-                    loader = scriptLoader;
+                        loader = scriptLoader;
+                    }
                 }
             }
 

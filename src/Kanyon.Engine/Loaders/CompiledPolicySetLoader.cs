@@ -30,7 +30,7 @@ namespace Kanyon.Engine.Loaders
             return this;
         }
 
-        public async Task<IEnumerable<IPolicy>> Load()
+        public Task<IEnumerable<IPolicy>> Load()
         {
             Type policySetType = null;
             var attributes = assembly.GetCustomAttributes<KanyonPolicySetAttribute>();
@@ -64,7 +64,7 @@ namespace Kanyon.Engine.Loaders
                 throw new MissingManifestException("The specified PolicySet type has no parameterless constructors");
             }
 
-            return Activator.CreateInstance(policySetType) as PolicySet;
+            return Task.FromResult<IEnumerable<IPolicy>>(Activator.CreateInstance(policySetType) as PolicySet);
         }
     }
 }
