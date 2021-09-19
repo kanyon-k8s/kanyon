@@ -11,7 +11,7 @@ namespace Kanyon.Engine.Loaders
 {
     public class CompiledManifestLoader : IManifestLoader
     {
-        private Assembly assembly;
+        protected Assembly assembly;
 
         public CompiledManifestLoader FromFile(FileInfo file)
         {
@@ -27,7 +27,7 @@ namespace Kanyon.Engine.Loaders
             return this;
         }
 
-        public async Task<Manifest> LoadManifest()
+        public virtual Task<Manifest> LoadManifest()
         {
             if (assembly == null) throw new ArgumentException("No assembly was loaded");
             var manifestType = assembly.GetCustomAttribute<KanyonManifestAttribute>()?.ManifestType;
@@ -54,7 +54,7 @@ namespace Kanyon.Engine.Loaders
                 throw new MissingManifestException("The specified Manifest type has no parameterless constructors");
             }
 
-            return Activator.CreateInstance(manifestType) as Manifest;
+            return Task.FromResult(Activator.CreateInstance(manifestType) as Manifest);
         }
     }
 }

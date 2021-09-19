@@ -13,6 +13,7 @@
     <PackageTags>Kubernetes</PackageTags>
     <VersionPrefix>3.2.0</VersionPrefix>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>CS1591,CS1570,CS1587</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
