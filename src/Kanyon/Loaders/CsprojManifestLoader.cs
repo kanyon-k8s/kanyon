@@ -23,10 +23,16 @@ namespace Kanyon.Loaders {
             var psi = new ProcessStartInfo
             {
                 FileName = "dotnet",
-                Arguments = $"build \"{projectFile}\" --nologo -o \"kanyon_temp\\publish\" /p:AssemblyName=manifest"
+                Arguments = $"build \"{projectFile}\" --nologo -o \"kanyon_temp\\publish\" /p:AssemblyName=manifest",
+                UseShellExecute = false,
+                RedirectStandardOutput = true
             };
 
-            var process = Process.Start(psi);
+            var process = new Process();
+            process.StartInfo = psi;
+            process.OutputDataReceived += (sender, args ) => { Console.Error.WriteLine(args.Data); };
+            process.Start();
+            process.BeginOutputReadLine();
             process.WaitForExit();
         }
     }
