@@ -13,7 +13,7 @@ namespace Kanyon.Engine.Configuration
             var envVars = Environment.GetEnvironmentVariables();
             foreach (DictionaryEntry env in envVars)
             {
-                values.Add(env.Key.ToString(), env.Value.ToString());
+                values[env.Key.ToString()] = env.Value.ToString();
             }
 
             return values;
