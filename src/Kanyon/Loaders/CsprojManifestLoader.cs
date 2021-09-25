@@ -10,20 +10,20 @@ namespace Kanyon.Loaders {
     {
         public new CsprojManifestLoader FromFile(FileInfo filePath) 
         {
-            StartBuildProcess(filePath.FullName);
+            StartBuildProcess(filePath);
 
-            var manifestFile = new FileInfo(Path.Combine("kanyon_temp", "publish", "manifest.dll"));
+            var manifestFile = new FileInfo(Path.Combine(filePath.DirectoryName, "kanyon_temp", "publish", "manifest.dll"));
             base.FromFile(manifestFile);
 
             return this;
         }
 
-        private void StartBuildProcess(string projectFile)
+        private void StartBuildProcess(FileInfo projectFile)
         {
             var psi = new ProcessStartInfo
             {
                 FileName = "dotnet",
-                Arguments = $"build \"{projectFile}\" --nologo -o \"kanyon_temp\\publish\" /p:AssemblyName=manifest",
+                Arguments = $"publish \"{projectFile.FullName}\" --nologo -o \"{projectFile.DirectoryName}\\kanyon_temp\\publish\" -c Release /p:AssemblyName=manifest",
                 UseShellExecute = false,
                 RedirectStandardOutput = true
             };
