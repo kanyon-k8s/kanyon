@@ -16,7 +16,7 @@ namespace Kanyon.Kubernetes.Core.V1
         /** <summary>name is the plural name of the resource.</summary> */
         public string name { get; set; }
         /** <summary>namespaced indicates if a resource is namespaced or not.</summary> */
-        public bool namespaced { get; set; }
+        public bool? namespaced { get; set; }
         /** <summary>shortNames is a list of suggested short names of the resource.</summary> */
         public IEnumerable<string> shortNames { get; set; }
         /** <summary>singularName is the singular name of the resource.  This allows clients to handle plural and singular opaquely. The singularName is more correct for reporting status on a single item and both singular and plural are allowed from the kubectl CLI interface.</summary> */

@@ -12,6 +12,6 @@ namespace Kanyon.Kubernetes.Policy.V1beta1
 Examples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`</summary> */
         public string pathPrefix { get; set; }
         /** <summary>when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.</summary> */
-        public bool readOnly { get; set; }
+        public bool? readOnly { get; set; }
     }
 }

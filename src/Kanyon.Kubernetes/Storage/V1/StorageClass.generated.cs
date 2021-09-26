@@ -14,7 +14,7 @@ namespace Kanyon.Kubernetes.Storage.V1
         public string Kind => "StorageClass";
 
         /** <summary>AllowVolumeExpansion shows whether the storage class allow volume expand</summary> */
-        public bool allowVolumeExpansion { get; set; }
+        public bool? allowVolumeExpansion { get; set; }
         /** <summary>Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.</summary> */
         public IEnumerable<Core.V1.TopologySelectorTerm> allowedTopologies { get; set; }
         /** <summary>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources</summary> */

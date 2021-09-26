@@ -14,7 +14,7 @@ namespace Kanyon.Kubernetes.Core.V1
         /** <summary>Optional: Extra command options if any.</summary> */
         public object options { get; set; }
         /** <summary>Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</summary> */
-        public bool readOnly { get; set; }
+        public bool? readOnly { get; set; }
         /** <summary>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</summary> */
         public Core.V1.SecretReference secretRef { get; set; }
     }

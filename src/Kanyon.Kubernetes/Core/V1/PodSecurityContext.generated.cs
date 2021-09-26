@@ -13,12 +13,12 @@ namespace Kanyon.Kubernetes.Core.V1
 
 If unset, the Kubelet will not modify the ownership and permissions of any volume.</summary> */
         public int fsGroup { get; set; }
-        /** <summary>fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir. Valid values are "OnRootMismatch" and "Always". If not specified defaults to "Always".</summary> */
+        /** <summary>fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir. Valid values are "OnRootMismatch" and "Always". If not specified, "Always" is used.</summary> */
         public string fsGroupChangePolicy { get; set; }
         /** <summary>The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.</summary> */
         public int runAsGroup { get; set; }
         /** <summary>Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.</summary> */
-        public bool runAsNonRoot { get; set; }
+        public bool? runAsNonRoot { get; set; }
         /** <summary>The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.</summary> */
         public int runAsUser { get; set; }
         /** <summary>SELinuxOptions are the labels to be applied to the container</summary> */

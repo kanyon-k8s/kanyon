@@ -19,7 +19,7 @@ namespace Kanyon.Kubernetes.Apps.V1
         public int numberAvailable { get; set; }
         /** <summary>The number of nodes that are running the daemon pod, but are not supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/</summary> */
         public int numberMisscheduled { get; set; }
-        /** <summary>The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and ready.</summary> */
+        /** <summary>numberReady is the number of nodes that should be running the daemon pod and have one or more of the daemon pod running with a Ready Condition.</summary> */
         public int numberReady { get; set; }
         /** <summary>The number of nodes that should be running the daemon pod and have none of the daemon pod running and available (ready for at least spec.minReadySeconds)</summary> */
         public int numberUnavailable { get; set; }

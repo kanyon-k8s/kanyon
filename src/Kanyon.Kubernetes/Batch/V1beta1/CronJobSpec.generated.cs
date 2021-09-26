@@ -20,6 +20,6 @@ namespace Kanyon.Kubernetes.Batch.V1beta1
         /** <summary>The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified. Defaults to 3.</summary> */
         public int successfulJobsHistoryLimit { get; set; }
         /** <summary>This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.</summary> */
-        public bool suspend { get; set; }
+        public bool? suspend { get; set; }
     }
 }

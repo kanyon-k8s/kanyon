@@ -7,9 +7,9 @@ namespace Kanyon.Kubernetes.Core.V1
 {
     public partial class EphemeralContainer
     {
-        /** <summary>Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell</summary> */
+        /** <summary>Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell</summary> */
         public IEnumerable<string> args { get; set; }
-        /** <summary>Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell</summary> */
+        /** <summary>Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell</summary> */
         public IEnumerable<string> command { get; set; }
         /** <summary>List of environment variables to set in the container. Cannot be updated.</summary> */
         public IEnumerable<Core.V1.EnvVar> env { get; set; }
@@ -36,9 +36,9 @@ namespace Kanyon.Kubernetes.Core.V1
         /** <summary>Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.</summary> */
         public Core.V1.Probe startupProbe { get; set; }
         /** <summary>Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false.</summary> */
-        public bool stdin { get; set; }
+        public bool? stdin { get; set; }
         /** <summary>Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false</summary> */
-        public bool stdinOnce { get; set; }
+        public bool? stdinOnce { get; set; }
         /** <summary>If set, the name of the container from PodSpec that this ephemeral container targets. The ephemeral container will be run in the namespaces (IPC, PID, etc) of this container. If not set then the ephemeral container is run in whatever namespaces are shared for the pod. Note that the container runtime must support this feature.</summary> */
         public string targetContainerName { get; set; }
         /** <summary>Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated.</summary> */
@@ -46,7 +46,7 @@ namespace Kanyon.Kubernetes.Core.V1
         /** <summary>Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.</summary> */
         public string terminationMessagePolicy { get; set; }
         /** <summary>Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false.</summary> */
-        public bool tty { get; set; }
+        public bool? tty { get; set; }
         /** <summary>volumeDevices is the list of block devices to be used by the container.</summary> */
         public IEnumerable<Core.V1.VolumeDevice> volumeDevices { get; set; }
         /** <summary>Pod volumes to mount into the container's filesystem. Cannot be updated.</summary> */

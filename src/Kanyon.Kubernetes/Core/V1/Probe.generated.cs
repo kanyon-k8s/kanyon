@@ -21,6 +21,8 @@ namespace Kanyon.Kubernetes.Core.V1
         public int successThreshold { get; set; }
         /** <summary>TCPSocketAction describes an action based on opening a socket</summary> */
         public Core.V1.TCPSocketAction tcpSocket { get; set; }
+        /** <summary>Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.</summary> */
+        public int terminationGracePeriodSeconds { get; set; }
         /** <summary>Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes</summary> */
         public int timeoutSeconds { get; set; }
     }

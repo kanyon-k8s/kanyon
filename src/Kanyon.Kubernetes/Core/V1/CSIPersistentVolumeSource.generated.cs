@@ -20,7 +20,7 @@ namespace Kanyon.Kubernetes.Core.V1
         /** <summary>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</summary> */
         public Core.V1.SecretReference nodeStageSecretRef { get; set; }
         /** <summary>Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).</summary> */
-        public bool readOnly { get; set; }
+        public bool? readOnly { get; set; }
         /** <summary>Attributes of the volume to publish.</summary> */
         public object volumeAttributes { get; set; }
         /** <summary>VolumeHandle is the unique volume name returned by the CSI volume plugin’s CreateVolume to refer to the volume on all subsequent calls. Required.</summary> */

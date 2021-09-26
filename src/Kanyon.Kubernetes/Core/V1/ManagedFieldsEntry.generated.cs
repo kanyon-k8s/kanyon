@@ -21,6 +21,8 @@ The exact format is defined in sigs.k8s.io/structured-merge-diff</summary> */
         public string manager { get; set; }
         /** <summary>Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are 'Apply' and 'Update'.</summary> */
         public string operation { get; set; }
+        /** <summary>Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.</summary> */
+        public string subresource { get; set; }
         /** <summary>Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.</summary> */
         public Core.V1.Time time { get; set; }
     }

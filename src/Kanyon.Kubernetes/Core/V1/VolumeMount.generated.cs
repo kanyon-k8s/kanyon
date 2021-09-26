@@ -14,7 +14,7 @@ namespace Kanyon.Kubernetes.Core.V1
         /** <summary>This must match the Name of a Volume.</summary> */
         public string name { get; set; }
         /** <summary>Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.</summary> */
-        public bool readOnly { get; set; }
+        public bool? readOnly { get; set; }
         /** <summary>Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).</summary> */
         public string subPath { get; set; }
         /** <summary>Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.</summary> */

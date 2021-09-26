@@ -14,11 +14,11 @@ namespace Kanyon.Kubernetes.Core.V1
         /** <summary>The name of the ScaleIO Protection Domain for the configured storage.</summary> */
         public string protectionDomain { get; set; }
         /** <summary>Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</summary> */
-        public bool readOnly { get; set; }
+        public bool? readOnly { get; set; }
         /** <summary>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</summary> */
         public Core.V1.SecretReference secretRef { get; set; }
         /** <summary>Flag to enable/disable SSL communication with Gateway, default false</summary> */
-        public bool sslEnabled { get; set; }
+        public bool? sslEnabled { get; set; }
         /** <summary>Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned.</summary> */
         public string storageMode { get; set; }
         /** <summary>The ScaleIO Storage Pool associated with the protection domain.</summary> */

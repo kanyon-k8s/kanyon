@@ -18,6 +18,6 @@ namespace Kanyon.Kubernetes.Core.V1
         /** <summary>Expected values Shared: multiple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared</summary> */
         public string kind { get; set; }
         /** <summary>Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</summary> */
-        public bool readOnly { get; set; }
+        public bool? readOnly { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace Kanyon.Kubernetes.Core.V1
         /** <summary>The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</summary> */
         public string pool { get; set; }
         /** <summary>ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</summary> */
-        public bool readOnly { get; set; }
+        public bool? readOnly { get; set; }
         /** <summary>SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace</summary> */
         public Core.V1.SecretReference secretRef { get; set; }
         /** <summary>The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</summary> */

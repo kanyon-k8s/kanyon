@@ -10,7 +10,7 @@ namespace Kanyon.Kubernetes.Apiextensions.V1
         /** <summary>additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If no columns are specified, a single column displaying the age of the custom resource is used.</summary> */
         public IEnumerable<Apiextensions.V1.CustomResourceColumnDefinition> additionalPrinterColumns { get; set; }
         /** <summary>deprecated indicates this version of the custom resource API is deprecated. When set to true, API requests to this version receive a warning header in the server response. Defaults to false.</summary> */
-        public bool deprecated { get; set; }
+        public bool? deprecated { get; set; }
         /** <summary>deprecationWarning overrides the default warning returned to API clients. May only be set when `deprecated` is true. The default warning indicates this version is deprecated and recommends use of the newest served version of equal or greater stability, if one exists.</summary> */
         public string deprecationWarning { get; set; }
         /** <summary>name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are served under this version at `/apis/<group>/<version>/...` if `served` is true.</summary> */
@@ -18,9 +18,9 @@ namespace Kanyon.Kubernetes.Apiextensions.V1
         /** <summary>CustomResourceValidation is a list of validation methods for CustomResources.</summary> */
         public Apiextensions.V1.CustomResourceValidation schema { get; set; }
         /** <summary>served is a flag enabling/disabling this version from being served via REST APIs</summary> */
-        public bool served { get; set; }
+        public bool? served { get; set; }
         /** <summary>storage indicates this version should be used when persisting custom resources to storage. There must be exactly one version with storage=true.</summary> */
-        public bool storage { get; set; }
+        public bool? storage { get; set; }
         /** <summary>CustomResourceSubresources defines the status and scale subresources for CustomResources.</summary> */
         public Apiextensions.V1.CustomResourceSubresources subresources { get; set; }
     }

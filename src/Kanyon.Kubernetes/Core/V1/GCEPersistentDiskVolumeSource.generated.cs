@@ -14,6 +14,6 @@ namespace Kanyon.Kubernetes.Core.V1
         /** <summary>Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</summary> */
         public string pdName { get; set; }
         /** <summary>ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</summary> */
-        public bool readOnly { get; set; }
+        public bool? readOnly { get; set; }
     }
 }

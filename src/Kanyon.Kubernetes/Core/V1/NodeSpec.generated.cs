@@ -7,7 +7,7 @@ namespace Kanyon.Kubernetes.Core.V1
 {
     public partial class NodeSpec
     {
-        /** <summary>NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.</summary> */
+        /** <summary>NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil. This API is deprecated since 1.22</summary> */
         public Core.V1.NodeConfigSource configSource { get; set; }
         /** <summary>Deprecated. Not all kubelets will set this field. Remove field after 1.13. see: https://issues.k8s.io/61966</summary> */
         public string externalID { get; set; }
@@ -20,6 +20,6 @@ namespace Kanyon.Kubernetes.Core.V1
         /** <summary>If specified, the node's taints.</summary> */
         public IEnumerable<Core.V1.Taint> taints { get; set; }
         /** <summary>Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration</summary> */
-        public bool unschedulable { get; set; }
+        public bool? unschedulable { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace Kanyon.Kubernetes.Scheduling.V1
         /** <summary>description is an arbitrary string that usually provides guidelines on when this priority class should be used.</summary> */
         public string description { get; set; }
         /** <summary>globalDefault specifies whether this PriorityClass should be considered as the default priority for pods that do not have any priority class. Only one PriorityClass can be marked as `globalDefault`. However, if more than one PriorityClasses exists with their `globalDefault` field set to true, the smallest value of such global default PriorityClasses will be used as the default priority.</summary> */
-        public bool globalDefault { get; set; }
+        public bool? globalDefault { get; set; }
         /** <summary>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</summary> */
         public string kind { get; set; }
         /** <summary>ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.</summary> */

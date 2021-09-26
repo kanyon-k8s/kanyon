@@ -15,7 +15,7 @@ namespace Kanyon.Kubernetes.Apps.V1
         public IEnumerable<Apps.V1.DeploymentCondition> conditions { get; set; }
         /** <summary>The generation observed by the deployment controller.</summary> */
         public int observedGeneration { get; set; }
-        /** <summary>Total number of ready pods targeted by this deployment.</summary> */
+        /** <summary>readyReplicas is the number of pods targeted by this Deployment with a Ready Condition.</summary> */
         public int readyReplicas { get; set; }
         /** <summary>Total number of non-terminated pods targeted by this deployment (their labels match the selector).</summary> */
         public int replicas { get; set; }

@@ -13,9 +13,9 @@ namespace Kanyon.Kubernetes.Rbac.V1
         public IEnumerable<string> nonResourceURLs { get; set; }
         /** <summary>ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.</summary> */
         public IEnumerable<string> resourceNames { get; set; }
-        /** <summary>Resources is a list of resources this rule applies to.  ResourceAll represents all resources.</summary> */
+        /** <summary>Resources is a list of resources this rule applies to. '&#42;' represents all resources.</summary> */
         public IEnumerable<string> resources { get; set; }
-        /** <summary>Verbs is a list of Verbs that apply to ALL the ResourceKinds and AttributeRestrictions contained in this rule.  VerbAll represents all kinds.</summary> */
+        /** <summary>Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '&#42;' represents all verbs.</summary> */
         public IEnumerable<string> verbs { get; set; }
     }
 }
