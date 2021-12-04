@@ -45,6 +45,8 @@ namespace Kanyon
 
         [Option("-e|--env-file")]
         public string EnvFile { get; set; }
+        [Option("-s|--source-env", Description = "Traverse the directory hierarchy to find any env files available")]
+        public bool SourceEnvFile { get; set; }
 
         private async Task EvaluateHelp(CommandLineApplication app)
         {
@@ -140,9 +142,9 @@ namespace Kanyon
                 providers.Add(new ArgumentManifestConfigurationProvider(Configuration));
             }
 
-            if (!string.IsNullOrEmpty(EnvFile))
+            if (!string.IsNullOrEmpty(EnvFile) || SourceEnvFile)
             {
-                providers.Add(new EnvFileManifestConfigurationProvider(EnvFile));
+                providers.Add(new EnhancedEnvFileManifestConfigurationProvider(EnvFile, SourceEnvFile));
             }
 
             return providers;
