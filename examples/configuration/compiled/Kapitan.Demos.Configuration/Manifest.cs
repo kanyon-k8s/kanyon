@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using Kanyon.Kubernetes.Apps.V1;
+using Kanyon.Kubernetes.Core.V1;
 
 namespace Kanyon.Demos.Configuration
 {
@@ -13,8 +16,9 @@ namespace Kanyon.Demos.Configuration
                     {
                         name = "helloworld",
                         annotations = new Dictionary<string, string> {
-                            { "manifest", configuration["Invocation:ManifestSource"] },
-                            { "generated-by", configuration["USERNAME"] }
+                            { "manifest", configuration["Invocation.ManifestSource"] },
+                            { "generated-by", configuration["USERNAME"] },
+                            { "env-file", configuration["ENV-FILE-NAME"]}
                         }
                     },
                     spec = new DeploymentSpec()
