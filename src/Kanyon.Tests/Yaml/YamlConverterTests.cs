@@ -6,6 +6,8 @@ using Kanyon.Core;
 using Kanyon.Kubernetes.Apiextensions.V1beta1;
 using Kanyon.Kubernetes.Core.V1;
 using Kanyon.Engine.Yaml;
+using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Any;
 
 namespace Kanyon.Yaml.Tests
 {
@@ -369,6 +371,33 @@ namespace Kanyon.Yaml.Tests
             var result = YamlConverter.SerializeObject(manifest);
 
             Assert.IsTrue(result.Contains("\"Y\""));
+        }
+        [TestMethod]
+        public void SerializeObject_WithOpenApiString_StringScalarIsRendered()
+        {
+            var manifest = new Kanyon.Kubernetes.Apiextensions.V1.CustomResourceDefinition {
+                spec = new Kubernetes.Apiextensions.V1.CustomResourceDefinitionSpec {
+                    versions = new [] {
+                        new Kubernetes.Apiextensions.V1.CustomResourceDefinitionVersion {
+                            schema = new Kubernetes.Apiextensions.V1.CustomResourceValidation {
+                                openAPIV3Schema = new OpenApiSchema {
+                                    Properties = new Dictionary<string, OpenApiSchema> {
+                                        { "test", new OpenApiSchema {
+                                                Type = "string",
+                                                Default = new OpenApiString("correctValue")
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            var result = YamlConverter.SerializeObject(manifest);
+
+            Assert.IsFalse(result.Contains("primitiveType: String"));
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Kanyon.Engine.Yaml
                     .WithNamingConvention(new CamelCaseNamingConvention())
                     .WithTypeInspector(ti => new AutoRestTypeInspector(ti))
                     .WithTypeConverter(new WrappedStringYamlConverter())
+                    .WithTypeConverter(new OpenApiStringYamlConverter())
                     .WithEventEmitter(e => new StringQuotingEmitter(e))
                     .WithAttributeOverride<OpenApiSchema>(s => s.AdditionalPropertiesAllowed, new YamlIgnoreAttribute())
                     .BuildValueSerializer();
