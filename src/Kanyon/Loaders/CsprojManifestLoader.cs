@@ -12,7 +12,7 @@ namespace Kanyon.Loaders {
         {
             StartBuildProcess(filePath);
 
-            var manifestFile = new FileInfo(Path.Combine(filePath.DirectoryName, "kanyon_temp", "publish", "manifest.dll"));
+            var manifestFile = new FileInfo(Path.Combine(filePath.DirectoryName, "obj", "kanyon_temp", "publish", "manifest.dll"));
             base.FromFile(manifestFile);
 
             return this;
@@ -23,7 +23,7 @@ namespace Kanyon.Loaders {
             var psi = new ProcessStartInfo
             {
                 FileName = "dotnet",
-                Arguments = $"publish \"{projectFile.FullName}\" --nologo -o \"{projectFile.DirectoryName}\\kanyon_temp\\publish\" -c Release /p:AssemblyName=manifest",
+                Arguments = $"publish \"{projectFile.FullName}\" --nologo -o \"{projectFile.DirectoryName}\\obj\\kanyon_temp\\publish\" -c Release /p:AssemblyName=manifest",
                 UseShellExecute = false,
                 RedirectStandardOutput = true
             };
