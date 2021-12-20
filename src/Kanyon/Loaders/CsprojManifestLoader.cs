@@ -34,6 +34,8 @@ namespace Kanyon.Loaders {
             process.Start();
             process.BeginOutputReadLine();
             process.WaitForExit();
+
+            if (process.ExitCode != 0) throw new ApplicationException($"MSBuild project failed to build");
         }
     }
 }
